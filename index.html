@@ -6,24 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
     <header>
-        <h1>Pick-A-Meal</h1>
+        <h1 class="white-text center z-depth-4">Pick-A-Meal</h1>
     </header>
 
     <main class="container">
-        <section id="search-panel" class="col">
-            <button type="button" class="button">Search</button>
-        </section>
+        <div class="row">
+            <section id="search-panel" class="col s12 m3 l3">
+                <input value="Alvin" id="first_name2" type="text" class="validate">
+                <label class="active" for="first_name2">First Name</label>
+                <a class="waves-effect waves-light btn">Search</a>
+            </section>
 
-        <section id="search-result" class="col">
+            <section id="search-result" class="col s12 m6 l6">
+                <div class="recipe-item card col s12 m6 l6 z-depth-4">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="images/office.jpg">
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Recipe 1<i class="material-icons right">close</i></span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+                </div>        
+                <div class="recipe-item card col s12 m6 l6 z-depth-4">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="images/office.jpg">
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Recipe 2<i class="material-icons right">close</i></span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+                </div>
+                <div class="recipe-item card col s12 m6 l6 z-depth-4">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="images/office.jpg">
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Recipe 3<i class="material-icons right">close</i></span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+                </div>
+                <div class="recipe-item card col s12 m6 l6 z-depth-4">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="images/office.jpg">
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Recipe 4<i class="material-icons right">close</i></span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+                </div>                        
+            </section>
 
-        </section>
+            <section id="favourites" class="col s12 m3 l3">
+                <p>Your favourites</p>
+                <div class="row">
+                    <div class="favourite-item card z-depth-4">
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">favourites 1<i class="material-icons right">close</i></span>
+                        </div>
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="images/office.jpg">
+                        </div>
+                    </div> 
 
-        <section id="favourites" class="grid-col-3">
-
-        </section>
+                    <div class="favourite-item card z-depth-4">
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">favourites 2<i class="material-icons right">close</i></span>
+                        </div>
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="images/office.jpg">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
     <!-- Compiled and minified JavaScript -->

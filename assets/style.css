@@ -1,0 +1,17 @@
+header{
+    background-image: linear-gradient(rgb(65, 65, 178), rgb(134, 210, 175) );
+}
+
+.container{
+    margin: 1%; 
+    align-items: center;
+}
+
+.recipe-item {
+    height: 200px; 
+}
+
+.favourite-item {
+    height: 150px; 
+    width: 150px; 
+}
