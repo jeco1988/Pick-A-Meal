@@ -113,7 +113,7 @@ function renderFavouriteList() {
             //for testing the api only 
             var getRecipeUrl = 'https://' + recipeApiHost + '/recipes/479101/information'; 
             
-            fetch(searchRcpUrl, recipeApiOptions).then(function(response){
+            fetch(getRecipeUrl, recipeApiOptions).then(function(response){
                 if (response.ok) {
                     response.json().then(function(data){
                         console.log(data); 
