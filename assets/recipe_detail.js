@@ -4,8 +4,11 @@ var recipeCredits = document.getElementById("credits");
 var recipeImagePath = document.getElementById("imageRecipe");
 var recipeIngredients = document.getElementById("ingredients");
 
+var suggestedVideosEl = document.getElementById("suggested-videos");
+var videoPlayerEl = document.getElementById("player"); 
+
 // API information
-var recipeApiKey = "d08811ab10234d4aa3a95a01418962e0";
+//var recipeApiKey = "d08811ab10234d4aa3a95a01418962e0";
 //var recipeApiHost = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
 var recipeApiHost = "api.spoonacular.com";
 /*const recipeApiOptions = {
@@ -64,6 +67,8 @@ function getRecipeDetail(recipeID) {
             // console.log(data[0].image);
             //console.log(data.title);
             // console.log(data[0].instructions);
+            
+            renderVideoList(data.title);
           }
         })
         .catch(function (err) {
@@ -73,8 +78,6 @@ function getRecipeDetail(recipeID) {
   });
 
   //renderSimilarList(recipeID);
-
-  ////renderVideoList(data[0].title);
 }
 
 function renderSimilarList(RecipeID) {
@@ -116,26 +119,48 @@ function renderVideoList(searchText) {
     "&type=video&key=" +
     youtubeApiKey;
 
-  // for testing the api only
-  var requestUrl =
+    var requestUrl =
     "https://www.googleapis.com/youtube/v3/search?part=snippet&q=Lemon-Pepper Fettucine Alfredo&type=video&key=" +
     youtubeApiKey;
 
-  fetch(requestUrl).then(function (response) {
+    fetch(requestUrl).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
 
       for (var i = 0; i < data.items.length; i++) {
         // render elements for similar recipe list in here
-        console.log(data.items[i].id.videoId);
-        console.log(data.items[i].snippet.thumbnails.medium.url);
-        console.log(data.items[i].snippet.title);
+        var videoItemEl = document.createElement('div'); 
+        videoItemEl.setAttribute('id', 'video-item'); 
+        videoItemEl.setAttribute('class', 'card'); 
+
+        var videoLink = document.createElement('a'); 
+        videoLink.setAttribute('href', 'https://www.youtube.com/embed/' + data.items[i].id.videoId + '?autoplay=1'); 
+        videoLink.setAttribute('target', 'player'); 
+
+        var videoThumbsnail = document.createElement('img'); 
+        videoThumbsnail.setAttribute('src', data.items[i].snippet.thumbnails.medium.url); 
+        videoThumbsnail.setAttribute('class', 'responsive-img'); 
+
+        var videoTitle = document.createElement('h6'); 
+        videoTitle.setAttribute('id', 'video-title'); 
+        videoTitle.innerHTML = data.items[i].snippet.title; 
+
+        videoLink.appendChild(videoThumbsnail); 
+        videoItemEl.appendChild(videoLink); 
+        videoItemEl.appendChild(videoTitle); 
+        
+        suggestedVideosEl.appendChild(videoItemEl); 
 
         // set the href attribute for playing the video in the player
         // or use iframe to play the vedio within our web page
+        if (i === 0) {
+          videoPlayerEl.setAttribute('src', 'https://www.youtube.com/embed/' + data.items[i].id.videoId)
+        }
       }
     });
   });
 }
 
 getRecipeID();
+
+renderVideoList(); 

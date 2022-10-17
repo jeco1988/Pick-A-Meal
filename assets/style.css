@@ -64,6 +64,20 @@ body {
     width: 150px; 
 }
 
+#video-item {
+    width:fit-content; 
+}
+
+#video-title {
+    padding: 2%; 
+    margin: 2%; 
+}
+
+#player {
+    width:100%; 
+    border: 3px solid red; 
+}
+
 .btn {
   background-color: red;
   border-radius: 10px;

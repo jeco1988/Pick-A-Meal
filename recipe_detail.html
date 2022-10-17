@@ -19,36 +19,30 @@
     </head>
     <main class="container">
         <div class="row">
-         <div class="col s12 m4  l9" style="border: 2px dotted">
+          <div class="col s12 m8 l9" style="border: 2px dotted">
             <h4 id="title"></h4>
             <blockquote id="credits"></blockquote>
             <blockquote id=""></blockquote>
             
-            <img id="imageRecipe"/>   
+            <img class="responsive-img" id="imageRecipe"/>   
           
             
             <h5>Ingredients</h5>
             <div class="divider"></div>
             <ul id="ingredients"></ul>
-        </div>
+            
+            <div class="divider"></div>
+            <iframe name="player" id="player" height="315" allow="autoplay" allowfullscreen>
+            </iframe>        
+          </div>
         
-        <div class="col s12 m4 l3" style="border: 2px dotted">
-            <div id="aside">
-              <h4>Suggested video</h4>
-              <div class="card">
-                <div class="card-image">
-                  <!--img src="//placehold.it/800x450/FF9800/EE00BB"-->
-                  <img src="https://webknox.com/recipeImages/659988-312x231.jpg">
-                  <!-- span class="card-title">Card Title</span -->
-                </div>
-                <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                  </div>
-                </div>
-                </div>   
+          <div class="col s12 m4 l3" style="border: 2px dotted">
+              <aside id="suggested-videos" class="aside">
+                <h5>Suggested videos</h5>
+                <!-- render video list here-->
+              </aside>
+          </div>  
+        </div> 
 </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
