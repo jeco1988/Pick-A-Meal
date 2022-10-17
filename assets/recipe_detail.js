@@ -4,6 +4,7 @@ var recipeServings = document.getElementById("servings");
 var recipeReadyInMins = document.getElementById("ready");
 var recipeImagePath = document.getElementById("imageRecipe");
 var recipeIngredients = document.getElementById("ingredients");
+var recipeInstructions = document.getElementById("cookingInstructions");
 
 // API information
 var recipeApiKey = "d08811ab10234d4aa3a95a01418962e0";
@@ -68,7 +69,17 @@ function getRecipeDetail(recipeID) {
                 data.extendedIngredients[i].original;
               recipeIngredients.appendChild(recipeIngredientsOL);
             }
-
+            //UPDATE THIS SECTION WHEN API KEY WORKS
+            for (
+              count = 0;
+              count < datadata.extendedIngredients.length;
+              count++
+            ) {
+              var recipeInstructionsOL = document.createElement("li");
+              recipeInstructionsOL.setAttribute("class", "collection-item");
+              recipeInstructionsOL.innerHTML = data.instructions[count];
+              recipeInstructions.appendChild(recipeInstructionsOL);
+            }
             // console.log(data[0].id);
             // console.log(data[0].image);
             //console.log(data.title);
