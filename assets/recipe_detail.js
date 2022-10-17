@@ -1,13 +1,20 @@
+//HTML elements in page
+var recipeTitle = document.getElementById("title");
+var recipeCredits = document.getElementById("credits");
+var recipeImagePath = document.getElementById("imageRecipe");
+var recipeIngredients = document.getElementById("ingredients");
+
 // API information
-var recipeApiKey = "77c5a014f3mshe2cbb253b24258ap111cdbjsn8a0643730e6e";
-var recipeApiHost = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
-const recipeApiOptions = {
+var recipeApiKey = "d08811ab10234d4aa3a95a01418962e0";
+//var recipeApiHost = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
+var recipeApiHost = "api.spoonacular.com";
+/*const recipeApiOptions = {
   method: "GET",
   headers: {
     "X-RapidAPI-Key": recipeApiKey,
     "X-RapidAPI-Host": recipeApiHost,
   },
-};
+};*/
 var youtubeApiKey = "AIzaSyCRMSFCRZ3BqQzY6fOgaV4UhnJwR0mlasw";
 
 var getRecipeID = function () {
@@ -28,9 +35,13 @@ function getRecipeDetail(recipeID) {
     "https://" + recipeApiHost + "/recipes/" + recipeID + "/information";
 
   //for testing the api only
-  var getRecipeUrl = "https://" + recipeApiHost + "/recipes/479101/information";
+  var getRecipeUrl =
+    "https://" +
+    recipeApiHost +
+    "/recipes/649850/information?apiKey=" +
+    recipeApiKey;
 
-  fetch(getRecipeUrl, recipeApiOptions).then(function (response) {
+  fetch(getRecipeUrl).then(function (response) {
     if (response.ok) {
       response
         .json()
@@ -39,10 +50,20 @@ function getRecipeDetail(recipeID) {
 
           if (data.length !== 0) {
             // assign value to the html elements
-            console.log(data[0].id);
-            console.log(data[0].image);
-            console.log(data[0].title);
-            console.log(data[0].instructions);
+            recipeTitle.innerHTML = data.title;
+            recipeCredits.innerHTML = "Author: " + data.creditsText;
+            recipeImagePath.setAttribute("src", data.image);
+
+            //recipeIngredients.innerHTML = data.extendedIngredients;
+            for (i = 0; i < data.extendedIngredients.length; i++) {
+              var recipeIngredientsOL = document.createElement("li");
+              recipeIngredientsOL.innerHTML = data.extendedIngredients[i].name;
+              recipeIngredients.append(recipeIngredientsOL);
+            }
+            // console.log(data[0].id);
+            // console.log(data[0].image);
+            //console.log(data.title);
+            // console.log(data[0].instructions);
           }
         })
         .catch(function (err) {
@@ -51,9 +72,9 @@ function getRecipeDetail(recipeID) {
     }
   });
 
-  renderSimilarList(recipeID);
+  //renderSimilarList(recipeID);
 
-  renderVideoList(data[0].title);
+  ////renderVideoList(data[0].title);
 }
 
 function renderSimilarList(RecipeID) {
@@ -117,4 +138,4 @@ function renderVideoList(searchText) {
   });
 }
 
-//getRecipeID();
+getRecipeID();
