@@ -1,8 +1,10 @@
-//HTML elements in page
+//HTML elements in recipe_detail HTML page
 var recipeTitle = document.getElementById("title");
-var recipeCredits = document.getElementById("credits");
+var recipeServings = document.getElementById("servings");
+var recipeReadyInMins = document.getElementById("ready");
 var recipeImagePath = document.getElementById("imageRecipe");
 var recipeIngredients = document.getElementById("ingredients");
+var recipeInstructions = document.getElementById("cookingInstructions");
 
 // API information
 var recipeApiKey = "d08811ab10234d4aa3a95a01418962e0";
@@ -51,14 +53,32 @@ function getRecipeDetail(recipeID) {
           if (data.length !== 0) {
             // assign value to the html elements
             recipeTitle.innerHTML = data.title;
-            recipeCredits.innerHTML = "Author: " + data.creditsText;
+
+            recipeServings.innerText = "Servings: " + data.servings;
+            recipeReadyInMins.innerHTML =
+              "Ready in minutes: " + data.readyInMinutes;
             recipeImagePath.setAttribute("src", data.image);
 
             //recipeIngredients.innerHTML = data.extendedIngredients;
             for (i = 0; i < data.extendedIngredients.length; i++) {
               var recipeIngredientsOL = document.createElement("li");
-              recipeIngredientsOL.innerHTML = data.extendedIngredients[i].name;
-              recipeIngredients.append(recipeIngredientsOL);
+              recipeIngredientsOL.setAttribute("class", "collection-item");
+              recipeIngredientsOL.innerHTML =
+                data.extendedIngredients[i].name +
+                "" +
+                data.extendedIngredients[i].original;
+              recipeIngredients.appendChild(recipeIngredientsOL);
+            }
+            //UPDATE THIS SECTION WHEN API KEY WORKS
+            for (
+              count = 0;
+              count < datadata.extendedIngredients.length;
+              count++
+            ) {
+              var recipeInstructionsOL = document.createElement("li");
+              recipeInstructionsOL.setAttribute("class", "collection-item");
+              recipeInstructionsOL.innerHTML = data.instructions[count];
+              recipeInstructions.appendChild(recipeInstructionsOL);
             }
             // console.log(data[0].id);
             // console.log(data[0].image);
