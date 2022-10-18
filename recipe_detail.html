@@ -9,14 +9,13 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link rel="stylesheet" href="./assets/style.css" />
-    <link rel="icon" type="image/x-icon" href="./assets/images/open-menu.png">
-
+    <link rel="icon" type="image/x-icon" href="./assets/images/Pick-A-Meal.jpg">
     <title>Recipe</title>
   </head>
   <body>
     <head>
-    <div class="card-panel teal header-container">
-      <h1 class="card-panel teal white-text hdr">PICK-A-MEAL!</h1>
+    <div class="card-panel teal">
+      <img class="logo" src="./assets/images/Pick-A-Meal.jpg">
     </div>
     </head>
     <main class="container">
@@ -66,14 +65,35 @@
         </div>
 
         <div class="col s12 m4 l3" style="border: 2px dotted">
-          <aside id="suggested-videos" class="aside">
-            <h5>Suggested videos</h5>
-            <!-- render video list here-->
-          </aside>
+            <div id="aside">
+              <h4>Suggested video</h4>
+              <div class="card">
+                <div class="card-image">
+                  <!--img src="//placehold.it/800x450/FF9800/EE00BB"-->
+                  <img src="https://webknox.com/recipeImages/659988-312x231.jpg">
+                  <!-- span class="card-title">Card Title</span -->
+                </div>
+                <div class="card-content">
+                  <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                  </div>
+                </div>
+                </div>   
+
         </div>
       </div>
     </main>
-
+      <div class="footer">
+        <div id="button"></div>
+      <div id="container">
+      <div id="cont">
+      <div class="footer_center">
+            <h3>© Copyright 2022 Pick-A-Meal Pty Ltd</h3>
+      </div>
+        <!-- render video list here-->
+      </aside>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="./assets/recipe_detail.js"></script>

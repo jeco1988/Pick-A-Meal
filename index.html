@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./assets/stylemain.css">
-    <link rel="icon" type="image/x-icon" href="./assets/images/menu.png">
+    <link rel="icon" type="image/x-icon" href="./assets/images/Pick-A-Meal.jpg">
 </head>
 <body>
   <header>
-      <div class = "card-panel teal header-container">
-        <h1 class="card-panel teal hdr">Pick-A-Meal </h1> 
+      <div class = "header-container card-panel">
+        <img class="logo" src="./assets/images/Pick-A-Meal.jpg">
       </div>
     </header>
 
@@ -22,10 +22,16 @@
           <section id="search-wrapper" class="col s12 m3 l3" style="border: 2px dotted">
               <input placeholder="Search by Keyword" id="first_name2" type="text" class="validate">
               <a class="waves-effect waves-light btn">Search</a>
-              <input placeholder="What meal is this?" id="first_name2" type="text" class="filter">
-              <input placeholder="What are you feeling? eg: Chinese, Pizza" id="first_name2" type="text" class="filter">
-              <input placeholder="Preferred Diet" id="first_name2" type="text" class="filter">
-              <input placeholder="Allergies or Intolerances" id="first_name2" type="text" class="filter">
+              <div class="input-field col s12">
+                <select multiple>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+                <label>Materialize Multiple Select</label>
+              </div>
+            
               <a class="waves-effect waves-light btn">Apply filters</a>
               
           </section>
