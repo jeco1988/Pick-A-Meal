@@ -54,9 +54,23 @@ body {
 /* .favourite-item {
   height: 150px;
   width: 150px;
+}*/
+
+#video-item {
+    width:fit-content; 
 }
 
-.btn {
+#video-title {
+    padding: 2%; 
+    margin: 2%; 
+}
+
+#player {
+    width:100%; 
+    border: 3px solid red; 
+}
+
+/*.btn {
   background-color: red;
   border-radius: 10px;
 }
