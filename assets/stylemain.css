@@ -69,12 +69,6 @@ body {
   border-radius: 10px;
 }
 
-@media screen and (max-width: 992px) {
- .row {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
- }
  #search-panel {
   width: 100%;
   display: flex;
@@ -189,6 +183,7 @@ body {
     width: 100%;
   }
 }
+
 @media screen and (max-width: 595px) {
   .row {
     display: flex;
