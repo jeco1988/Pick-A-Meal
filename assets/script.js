@@ -1,5 +1,5 @@
 // API information 
-var recipeApiKey = '77c5a014f3mshe2cbb253b24258ap111cdbjsn8a0643730e6e'; 
+var recipeApiKey = 'e997f9e02dmsh36310832249fb62p1d185ajsn9739a2708183'; 
 var recipeApiHost = 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
 const recipeApiOptions = {
     method: 'GET',
