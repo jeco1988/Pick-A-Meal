@@ -145,11 +145,7 @@ function renderVideoList(searchText) {
     searchText +
     "&type=video&key=" +
     youtubeApiKey;
-  /*
-    var requestUrl =
-    "https://www.googleapis.com/youtube/v3/search?part=snippet&q=Lemon-Pepper Fettucine Alfredo&type=video&key=" +
-    youtubeApiKey;
-*/
+
   fetch(requestUrl).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
