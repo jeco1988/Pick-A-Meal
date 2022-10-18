@@ -140,5 +140,6 @@ function renderFavouriteList() {
     }
 }
 
+
 searchBtn.addEventListener('click', searchRecipe); 
 searchResultEl.addEventListener('click', favouriteClick); 

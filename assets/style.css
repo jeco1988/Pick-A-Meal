@@ -14,25 +14,26 @@ body {
   src: url(./Font/Farmstand\ Market\ Regular.ttf);
 }
 
-/* .header-container {
+
+.header-container {
   width: 100%;
   height: 100%;
   background: url(./images/various-spices-and-herbs-website-header.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 120px;
-} */
+}
 
-/* .hdr {
+.hdr {
   display: flex;
+  font-size: 80px;
   width: 20%;
-  background-color: red;
-  font-family: "customFont", Arial, Helvetica, sans-serif;
+  font-family: 'customFont', Arial, Helvetica, sans-serif;
   font-weight: bold;
   min-height: 120px;
   min-width: 150px;
-  color: black;
-} */
+  color: white;
+} 
 
 .container {
   padding-left: 2%;
