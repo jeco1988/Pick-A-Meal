@@ -155,12 +155,13 @@ function renderVideoList(searchText) {
         videoItemEl.setAttribute('class', 'card'); 
 
         var videoLink = document.createElement('a'); 
-        videoLink.setAttribute('href', 'https://www.youtube.com/embed/' + data.items[i].id.videoId + '?autoplay=1'); 
-        videoLink.setAttribute('target', 'player'); 
+        videoLink.setAttribute('href', '#player'); 
 
         var videoThumbsnail = document.createElement('img'); 
         videoThumbsnail.setAttribute('src', data.items[i].snippet.thumbnails.medium.url); 
         videoThumbsnail.setAttribute('class', 'responsive-img'); 
+        videoThumbsnail.setAttribute('data-link', 'https://www.youtube.com/embed/' + data.items[i].id.videoId + '?autoplay=1');
+
 
         var videoTitle = document.createElement('h6'); 
         videoTitle.setAttribute('id', 'video-title'); 
@@ -181,5 +182,15 @@ function renderVideoList(searchText) {
     });
   });
 }
+
+function playVideo(event){
+  var element = event.target; 
+
+  if (element.matches('img')) {
+      videoPlayerEl.setAttribute('src', element.dataset.link); 
+  }
+}
+
+suggestedVideosEl.addEventListener('click', playVideo); 
 
 getRecipeID();
