@@ -7,7 +7,7 @@ var recipeIngredients = document.getElementById("ingredients");
 var recipeInstructions = document.getElementById("cookingInstructions");
 
 var suggestedVideosEl = document.getElementById("suggested-videos");
-var videoPlayerEl = document.getElementById("player"); 
+var videoPlayerEl = document.getElementById("player");
 
 // API information
 //var recipeApiKey = "d08811ab10234d4aa3a95a01418962e0";
@@ -60,7 +60,7 @@ function getRecipeDetail(recipeID) {
 
             recipeServings.innerText = "Servings: " + data.servings;
             recipeReadyInMins.innerHTML =
-              "Ready in minutes: " + data.readyInMinutes;
+              "Cooking time: " + data.readyInMinutes + " minutes";
             recipeImagePath.setAttribute("src", data.image);
 
             //recipeIngredients.innerHTML = data.extendedIngredients;
@@ -68,27 +68,33 @@ function getRecipeDetail(recipeID) {
               var recipeIngredientsOL = document.createElement("li");
               recipeIngredientsOL.setAttribute("class", "collection-item");
               recipeIngredientsOL.innerHTML =
-                data.extendedIngredients[i].name +
-                "" +
-                data.extendedIngredients[i].original;
+                data.extendedIngredients[i].amount +
+                "   " +
+                data.extendedIngredients[i].unit +
+                "   " +
+                data.extendedIngredients[i].name;
               recipeIngredients.appendChild(recipeIngredientsOL);
             }
             //UPDATE THIS SECTION WHEN API KEY WORKS
-            for (
-              count = 0;
-              count < data.extendedIngredients.length;
-              count++
-            ) {
-              var recipeInstructionsOL = document.createElement("li");
-              recipeInstructionsOL.setAttribute("class", "collection-item");
-              recipeInstructionsOL.innerHTML = data.instructions[count];
-              recipeInstructions.appendChild(recipeInstructionsOL);
+            var cookInstruction = data.instructions.split(".");
+
+            for (count = 0; count < cookInstruction.length; count++) {
+              //check for empty string
+
+              if (cookInstruction[count] != "") {
+                //console.log(cookInstruction[count]);
+                var recipeInstructionsOL = document.createElement("li");
+                recipeInstructionsOL.setAttribute("class", "collection-item");
+                recipeInstructionsOL.innerHTML = cookInstruction[count];
+                recipeInstructions.appendChild(recipeInstructionsOL);
+              }
             }
+
             // console.log(data[0].id);
             // console.log(data[0].image);
             //console.log(data.title);
             // console.log(data[0].instructions);
-            
+
             renderVideoList(data.title);
           }
         })
@@ -139,17 +145,17 @@ function renderVideoList(searchText) {
     searchText +
     "&type=video&key=" +
     youtubeApiKey;
-/*
+  /*
     var requestUrl =
     "https://www.googleapis.com/youtube/v3/search?part=snippet&q=Lemon-Pepper Fettucine Alfredo&type=video&key=" +
     youtubeApiKey;
 */
-    fetch(requestUrl).then(function (response) {
+  fetch(requestUrl).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
 
       for (var i = 0; i < data.items.length; i++) {
-        // render elements for similar recipe list in here
+        // render elements for video list in here
         var videoItemEl = document.createElement('div'); 
         videoItemEl.setAttribute('id', 'video-item'); 
         videoItemEl.setAttribute('class', 'card'); 
@@ -176,7 +182,10 @@ function renderVideoList(searchText) {
         // set the href attribute for playing the video in the player
         // or use iframe to play the vedio within our web page
         if (i === 0) {
-          videoPlayerEl.setAttribute('src', 'https://www.youtube.com/embed/' + data.items[i].id.videoId)
+          videoPlayerEl.setAttribute(
+            "src",
+            "https://www.youtube.com/embed/" + data.items[i].id.videoId
+          );
         }
       }
     });

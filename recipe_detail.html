@@ -13,37 +13,64 @@
   </head>
   <body>
     <head>
-    <div class="card-panel teal">
-      <h1 class="white-text">PICK-A-MEAL!</h1>
-    </div>
+      <div class="card-panel teal">
+        <h1 class="white-text">PICK-A-MEAL!</h1>
+      </div>
     </head>
     <main class="container">
-        <div class="row">
-          <div class="col s12 m8 l9" style="border: 2px dotted">
-            <h4 id="title"></h4>
-            <h6 id="servings"></h6>
-            <h6 id="ready"></h6>
-            <img class="responsive-img" id="imageRecipe"/>   
-            <h5>Ingredients</h5>
-            <div class="divider" style="border-bottom-style:dotted; border-bottom-width: 3px; border-bottom-color: black ;"></div>
-            <ul id="ingredients" class="collection"></ul>
-            <h5>Cooking instructions</h5>
-            <div class="divider" style="border-bottom-style:dotted; border-bottom-width: 3px; border-bottom-color: black ;"></div>
-            <ul id="cookingInstructions" class="collection"></ul>
+      <div class="row">
+        <div class="col s12 m8 l9" style="border: 2px dotted">
+          <h4 id="title"></h4>
+          <h6 id="servings"></h6>
+          <h6 id="ready"></h6>
+          <img class="responsive-img" id="imageRecipe" />
+          <h5>Ingredients</h5>
+          <div
+            class="divider"
+            style="
+              border-bottom-style: dotted;
+              border-bottom-width: 3px;
+              border-bottom-color: black;
+            "
+          ></div>
+          <ul id="ingredients" class="collection"></ul>
+          <h5>Cooking instructions</h5>
+          <div
+            class="divider"
+            style="
+              border-bottom-style: dotted;
+              border-bottom-width: 3px;
+              border-bottom-color: black;
+            "
+          ></div>
+          <ol id="cookingInstructions" class="collection"></ol>
+          <h4>Similar recipe video</h4>
+          <div
+            class="divider"
+            style="
+              border-bottom-style: dotted;
+              border-bottom-width: 3px;
+              border-bottom-color: black;
+            "
+          ></div>
+          <iframe
+            name="player"
+            id="player"
+            height="315"
+            allow="autoplay"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
 
-            <div class="divider"></div>
-            <iframe name="player" id="player" height="315" allow="autoplay" allowfullscreen>
-            </iframe>        
-          </div>
-        
-          <div class="col s12 m4 l3" style="border: 2px dotted">
-              <aside id="suggested-videos" class="aside">
-                <h5>Suggested videos</h5>
-                <!-- render video list here-->
-              </aside>
-          </div>  
-        </div> 
-</main>
+        <div class="col s12 m4 l3" style="border: 2px dotted">
+          <aside id="suggested-videos" class="aside">
+            <h5>Suggested videos</h5>
+            <!-- render video list here-->
+          </aside>
+        </div>
+      </div>
+    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
