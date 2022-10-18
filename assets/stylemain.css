@@ -24,6 +24,12 @@ body {
   min-height: 120px;
 }
 
+.logo {
+  width: auto;
+  height: auto;
+  min-height: 120px;
+}
+
 .hdr {
   display: flex;
   width: 20%;
@@ -86,17 +92,6 @@ body {
  #favourites {
   width: 100%;
 }
-}
-.favourite-item {
-  cursor: pointer;
-}
-.favourite-item,
-.favourite-item:after {
-  content: ' \2605';
-  color: rgb(255, 203, 0);
-}
-.favourite-item:after {
-  content: ' \2606';
 }
 
 .section{
