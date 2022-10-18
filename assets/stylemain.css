@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: whitesmoke;;
+  background-color: whitesmoke;
   display: block;
 }
 
@@ -14,11 +14,10 @@ body {
   src: url(./Font/Farmstand\ Market\ Regular.ttf);
 }
 
-
-.header-container{
+.header-container {
   width: 100%;
   height: 100%;
-  background:url(./images/various-spices-and-herbs-website-header.jpg);
+  background: url(./images/various-spices-and-herbs-website-header.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 120px;
@@ -32,8 +31,8 @@ body {
 
 .hdr {
   display: flex;
+  font-size: 80px;
   width: 20%;
-  background-color: red;
   font-family: 'customFont', Arial, Helvetica, sans-serif;
   font-weight: bold;
   min-height: 120px;
@@ -41,23 +40,20 @@ body {
   color: white;
 }
 
-
-
-.container{
-  display: flex; 
-  margin-left: 1px ;
-  margin-right: 1px ;
+.container {
+  display: flex;
+  margin-left: 1px;
+  margin-right: 1px;
   min-width: 100%;
-  }
+}
 .row {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
 
-
 .recipe-item {
-  height: 200px; 
+  height: 200px;
 }
 
 #favourites {
@@ -65,8 +61,8 @@ body {
 }
 
 .favourite-item {
-  height: 150px; 
-  width: 150px; 
+  height: 150px;
+  width: 150px;
 }
 
 .btn {
@@ -92,84 +88,111 @@ body {
  #favourites {
   width: 100%;
 }
+.section {
+  text-align: center;
 }
-
-.section{
-  text-align:center;
+.footer #button {
+  width: 35px;
+  height: 35px;
+  border: black 12px solid;
+  border-radius: 35px;
+  margin: 0 auto;
+  position: relative;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
 }
-.footer #button{
-	width:35px;
-	height:35px;
-	border: black 12px solid;
-	border-radius:35px;
-	margin:0 auto;
-	position:relative;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-}
-.footer #button:hover{
-	width:35px;
-	height:35px;
-	border: black 12px solid;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-	position:relative;
+.footer #button:hover {
+  width: 35px;
+  height: 35px;
+  border: black 12px solid;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  position: relative;
 }
 .footer {
-	bottom:0;
-	left:0;
-	position:fixed;
-    width: 100%;
-    height: 3em;
-    overflow:hidden;
-    margin:0 auto;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-	z-index:999;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 3em;
+  overflow: hidden;
+  margin: 0 auto;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  z-index: 999;
 }
 .footer:hover {
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-	height: 10em;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  height: 10em;
 }
 .footer #container{
 	margin-top:5px;
 	width:100%;
-height:100%;
+  height:100%;
   position:relative;
   top:0;
   left:0;
 	background: red(255, 0, 0);
 }
-.footer #cont{
-  position:relative;
-  top:-45px;
-  right:190px;
-	width:150px;
-	height:auto;
-	margin:0 auto;
+.footer #cont {
+  position: relative;
+  top: -45px;
+  right: 190px;
+  width: 150px;
+  height: auto;
+  margin: 0 auto;
 }
-.footer_center{
-	width:500px;
-	float:left;
-  text-align:center;
+.footer_center {
+  width: 500px;
+  float: left;
+  text-align: center;
 }
-.footer h3{
-	font-family: 'Helvetica';
-	font-size: 20px;
-	font-weight: 100;
-	margin-top: 70px;
-	margin-left:40px;
+.footer h3 {
+  font-family: "Helvetica";
+  font-size: 20px;
+  font-weight: 100;
+  margin-top: 70px;
+  margin-left: 40px;
+}
+
+@media screen and (max-width: 992px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+  }
+  #search-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #search-result {
+    width: 100%;
+  }
+
+  #favourites {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 595px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;  
+  }
 }
