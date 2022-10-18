@@ -12,7 +12,7 @@ const recipeApiOptions = {
 // declare elements in the html
 var searchResultEl = document.querySelector('#search-result'); 
 var favouritesEl = document.querySelector('#favourites'); 
-var searchBtn = document.querySelector([search button id]); 
+var searchBtn = document.querySelector('#search-button'); 
 
 // favourite list from local storage 
 var favouriteList = new Array(); 
@@ -21,6 +21,8 @@ init();
 
 function init(){
     renderFavouriteList(); 
+
+    renderRandomRecipe(); 
 }
 
 // call the below function after clicking the search button 
@@ -66,39 +68,44 @@ function favouriteClick(event) {
 
     // if click on the star
     if (element.matches([favourite icon element])) {
-        // call API to retrieve the recipe details; 
-        saveFavourite(element.dateset.recipeID, element.dataset.selected)
-    }
-}
+        saveFavourite(element.dateset.recipeID, element.dataset.image, element.dataset.title, element.dataset.selected)
 
-function saveFavourite(recipeID, isFavourite) {
-    if (isFavourite) {
-        //remove the recipe ID from the local storage
-        if (favouriteList !== null) {
-            for (var i = 0; i < favouriteList.length; i++) {
-                if (favouriteList[i] == recipeID) {
-                    favouriteList.splice(i, 1); 
-                    break;
+        if (element.dataset.selected) {
+            //remove the recipe ID from the local storage
+            if (favouriteList !== null) {
+                for (var i = 0; i < favouriteList.length; i++) {
+                    if (favouriteList[i].id == element.dataset.recipeID) {
+                        favouriteList.splice(i, 1); 
+                        break;
+                    }
                 }
+                // save to local storage 
+                localStorage.setItem("favourites", JSON.stringify(favouriteList));
+                
+                element.setAttribute('data-selected', 'false')
             }
+        } else {        
+            //add the favouriteItem to the local storage
+            var favouriteItem = {
+                id: element.dataset.recipeID,
+                image: element.dataset.image, 
+                title: element.dataset.title 
+            }; 
+
+            if (favouriteList === null) {
+                favouriteList = new Array(); 
+                favouriteList.push(favouriteItem);    
+            } else {
+                favouriteList.push(favouriteItem);
+            }
+        
             // save to local storage 
             localStorage.setItem("favourites", JSON.stringify(favouriteList));
         }
-    } else {        
-        //add the recipe ID to the local storage  
-        if (favouriteList === null) {
-            favouriteList = new Array(); 
-            favouriteList.push(recipeID);    
-        } else {
-            favouriteList.push(recipeID);
-        }
     
-        // save to local storage 
-        localStorage.setItem("favourites", JSON.stringify(favouriteList));
+        renderFavouriteList();     
     }
-
-    renderFavouriteList(); 
-} 
+}
 
 function renderFavouriteList() {
     favouritesEl.innerHTML = ""; 
@@ -107,38 +114,52 @@ function renderFavouriteList() {
 
     if (favouriteList !== null) {
         for (var i = 0; i < favouriteList.length; i++) {
-            //call API to get the specific recipe and rendering elements on the screen
-            var getRecipeUrl = 'https://' + recipeApiHost + '/recipes/' + favouriteList[i] + '/information'; 
+            //rendering elements showing in the favourite list 
+            console.log(favouriteList.id); 
+            console.log(favouriteList.image); 
+            console.log(favouriteList.title); 
 
-            //for testing the api only 
-            var getRecipeUrl = 'https://' + recipeApiHost + '/recipes/479101/information'; 
-            
-            fetch(getRecipeUrl, recipeApiOptions).then(function(response){
-                if (response.ok) {
-                    response.json().then(function(data){
-                        console.log(data); 
-                        for (var i = 0; i < data.results.length; i++) {
-                            //rendering elements showing in the favourite list 
-                            console.log(data.id); 
-                            console.log(data.image); 
-                            console.log(data.title); 
-        
-                            var li = document.createElement("li");
+            var li = document.createElement("li");
 
-                            // set the href attribute to the recipe detail page 
-                            [image a element].setAttribute('href', './recipe_detail.html?recipeID=' + data.id);
+            // set the href attribute to the recipe detail page 
+            [image a element].setAttribute('href', './recipe_detail.html?recipeID=' + data.id);
 
-                            favouritesEl.appendChild(li);
-                        }
-                    })
-                    .catch(function(err) {
-                        console.error(err)
-                    })
-                }
-            })        
+            favouritesEl.appendChild(li);
         }
     }
 }
 
+function renderRandomRecipe(){
+    searchResultEl.innerHTML = ""; 
+
+    //call API to get the recipe randomly and rendering elements on the screen
+    var getRandomRcpUrl = 'https://' + recipeApiHost + '/recipes/random?number=4'; 
+     
+    fetch(getRandomRcpUrl, recipeApiOptions).then(function(response){
+        if (response.ok) {
+            response.json().then(function(data){
+                console.log(data); 
+                for (var i = 0; i < data.recipes.length; i++) {
+                    //rendering elements showing in the favourite list 
+                    console.log(data.recipes[i].id); 
+                    console.log(data.recipes[i].image); 
+                    console.log(data.recipes[i].title); 
+
+                    var li = document.createElement("li");
+
+                    // set the href attribute to the recipe detail page 
+                    [image a element].setAttribute('href', './recipe_detail.html?recipeID=' + data.id);
+
+                    searchResultEl.appendChild(li);
+                }
+            })
+            .catch(function(err) {
+                console.error(err)
+            })
+        }
+    })        
+}
+
 searchBtn.addEventListener('click', searchRecipe); 
 searchResultEl.addEventListener('click', favouriteClick); 
+favouritesEl.addEventListener('click', favouriteClick); 

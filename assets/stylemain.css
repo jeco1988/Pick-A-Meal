@@ -23,6 +23,12 @@ body {
   min-height: 120px;
 }
 
+.logo {
+  width: auto;
+  height: auto;
+  min-height: 120px;
+}
+
 .hdr {
   display: flex;
   font-size: 80px;
@@ -64,19 +70,19 @@ body {
   border-radius: 10px;
 }
 
-
-.favourite-item {
-  cursor: pointer;
+ #search-panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ }
+ #search-result {
+  width: 100%;
+  }
+ 
+ #favourites {
+  width: 100%;
 }
-.favourite-item,
-.favourite-item:after {
-  content: " \2605";
-  color: rgb(255, 203, 0);
-}
-.favourite-item:after {
-  content: " \2606";
-}
-
 .section {
   text-align: center;
 }
@@ -178,6 +184,7 @@ body {
     width: 100%;
   }
 }
+
 @media screen and (max-width: 595px) {
   .row {
     display: flex;

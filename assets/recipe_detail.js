@@ -155,36 +155,29 @@ function renderVideoList(searchText) {
       console.log(data);
 
       for (var i = 0; i < data.items.length; i++) {
-        // render elements for similar recipe list in here
-        var videoItemEl = document.createElement("div");
-        videoItemEl.setAttribute("id", "video-item");
-        videoItemEl.setAttribute("class", "card");
+        // render elements for video list in here
+        var videoItemEl = document.createElement('div'); 
+        videoItemEl.setAttribute('id', 'video-item'); 
+        videoItemEl.setAttribute('class', 'card'); 
 
-        var videoLink = document.createElement("a");
-        videoLink.setAttribute(
-          "href",
-          "https://www.youtube.com/embed/" +
-            data.items[i].id.videoId +
-            "?autoplay=1"
-        );
-        videoLink.setAttribute("target", "player");
+        var videoLink = document.createElement('a'); 
+        videoLink.setAttribute('href', '#player'); 
 
-        var videoThumbsnail = document.createElement("img");
-        videoThumbsnail.setAttribute(
-          "src",
-          data.items[i].snippet.thumbnails.medium.url
-        );
-        videoThumbsnail.setAttribute("class", "responsive-img");
+        var videoThumbsnail = document.createElement('img'); 
+        videoThumbsnail.setAttribute('src', data.items[i].snippet.thumbnails.medium.url); 
+        videoThumbsnail.setAttribute('class', 'responsive-img'); 
+        videoThumbsnail.setAttribute('data-link', 'https://www.youtube.com/embed/' + data.items[i].id.videoId + '?autoplay=1');
 
-        var videoTitle = document.createElement("h6");
-        videoTitle.setAttribute("id", "video-title");
-        videoTitle.innerHTML = data.items[i].snippet.title;
 
-        videoLink.appendChild(videoThumbsnail);
-        videoItemEl.appendChild(videoLink);
-        videoItemEl.appendChild(videoTitle);
+        var videoTitle = document.createElement('h6'); 
+        videoTitle.setAttribute('id', 'video-title'); 
+        videoTitle.innerHTML = data.items[i].snippet.title; 
 
-        suggestedVideosEl.appendChild(videoItemEl);
+        videoLink.appendChild(videoThumbsnail); 
+        videoItemEl.appendChild(videoLink); 
+        videoItemEl.appendChild(videoTitle); 
+        
+        suggestedVideosEl.appendChild(videoItemEl); 
 
         // set the href attribute for playing the video in the player
         // or use iframe to play the vedio within our web page
@@ -198,5 +191,15 @@ function renderVideoList(searchText) {
     });
   });
 }
+
+function playVideo(event){
+  var element = event.target; 
+
+  if (element.matches('img')) {
+      videoPlayerEl.setAttribute('src', element.dataset.link); 
+  }
+}
+
+suggestedVideosEl.addEventListener('click', playVideo); 
 
 getRecipeID();
