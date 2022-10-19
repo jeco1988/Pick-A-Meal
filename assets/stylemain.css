@@ -230,4 +230,8 @@ body {
     flex-direction: column;
     width: 100%;
   }
+
+  #favourite-items {
+    display:block; 
+  }
 }
