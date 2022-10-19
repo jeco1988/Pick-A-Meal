@@ -58,12 +58,11 @@ body {
 }
 
 #favourites {
-  float: right;
+  display:block; 
 }
 
-.favourite-item {
-  height: 150px;
-  width: 150px;
+#favourite-items{
+  display:block; 
 }
 
 .btn {
@@ -73,11 +72,15 @@ body {
 .favourite-item {
   background-color: rgb(19, 162, 162);
   padding: 2%; 
-  width: 100%;
+  width: 96%;
   height:fit-content;
+  margin: 2%; 
   border-radius: 10px;
   cursor: pointer;
+  color: rgb(255, 203, 0);
 }
+
+/*
 .favourite-item,
 .favourite-item:after {
   content: " \2605";
@@ -86,7 +89,7 @@ body {
 .favourite-item:after {
   content: " \2606";
 }
-
+*/
 #search-panel {
   width: 100%;
   display: flex;
@@ -209,6 +212,10 @@ body {
 
   #favourites {
     width: 100%;
+  }
+
+  #favourite-items {
+    display:flex; 
   }
 }
 

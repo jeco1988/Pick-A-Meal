@@ -11,21 +11,20 @@ const recipeApiOptions = {
 
 // declare elements in the html
 var searchResultEl = document.querySelector('#search-result'); 
-var favouritesEl = document.querySelector('#favourites'); 
+var favouriteItemsEl = document.querySelector('#favourite-items'); 
 var searchBtn = document.querySelector('#search-button'); 
 
 // favourite list from local storage 
 var favouriteList = new Array(); 
 
-init(); 
-
 function init(){
     renderFavouriteList(); 
-
-    renderRandomRecipe(); 
+    $('.modal').modal();
+    //renderRandomRecipe(); 
 }
 
 // call the below function after clicking the search button 
+/*
 function searchRecipe(event) {
     event.preventDefault(); 
 
@@ -61,20 +60,20 @@ function searchRecipe(event) {
         }
     })
 }
+*/
 
 // call the below functions when the user click the favourite icon 
-function favouriteClick(event) {
+function favouriteItemsClick(event) {
     var element = event.target;
 
     // if click on the star
-    if (element.matches([favourite icon element])) {
-        saveFavourite(element.dateset.recipeID, element.dataset.image, element.dataset.title, element.dataset.selected)
-
+    if (element.matches('i')) { 
         if (element.dataset.selected) {
             //remove the recipe ID from the local storage
             if (favouriteList !== null) {
+                $('#remove-favourite').modal('open');
                 for (var i = 0; i < favouriteList.length; i++) {
-                    if (favouriteList[i].id == element.dataset.recipeID) {
+                    if (favouriteList[i].id == element.dataset.recipeid) {
                         favouriteList.splice(i, 1); 
                         break;
                     }
@@ -87,7 +86,7 @@ function favouriteClick(event) {
         } else {        
             //add the favouriteItem to the local storage
             var favouriteItem = {
-                id: element.dataset.recipeID,
+                id: element.dataset.recipeid,
                 image: element.dataset.image, 
                 title: element.dataset.title 
             }; 
@@ -108,27 +107,45 @@ function favouriteClick(event) {
 }
 
 function renderFavouriteList() {
-    favouritesEl.innerHTML = ""; 
+    favouriteItemsEl.innerHTML = ""; 
 
     favouriteList = JSON.parse(localStorage.getItem("favourites")); 
 
     if (favouriteList !== null) {
         for (var i = 0; i < favouriteList.length; i++) {
             //rendering elements showing in the favourite list 
-            console.log(favouriteList.id); 
-            console.log(favouriteList.image); 
-            console.log(favouriteList.title); 
+            var favouriteItemEl = document.createElement('div'); 
+            favouriteItemEl.setAttribute('class', 'favourite-item card z-depth-4'); 
+            
+            var titleEl = document.createElement('h6'); 
+            titleEl.setAttribute('id', 'favourite-title'); 
+            titleEl.innerHTML = favouriteList[i].title; 
 
-            var li = document.createElement("li");
+            var linkEl = document.createElement('a'); 
+            linkEl.setAttribute('href', './recipe_detail.html?recipeID=' + favouriteList[i].id); 
 
-            // set the href attribute to the recipe detail page 
-            [image a element].setAttribute('href', './recipe_detail.html?recipeID=' + data.id);
+            var ImageEl = document.createElement('img'); 
+            ImageEl.setAttribute('class', 'responsive-img'); 
+            ImageEl.setAttribute('src', favouriteList[i].image); 
 
-            favouritesEl.appendChild(li);
+            var iconEl = document.createElement('i'); 
+            iconEl.setAttribute('class', 'fa-solid fa-star star'); 
+            iconEl.setAttribute('data-selected', true); 
+            iconEl.setAttribute('data-recipeid', favouriteList[i].id); 
+            iconEl.setAttribute('data-image', favouriteList[i].image);
+            iconEl.setAttribute('data-title', favouriteList[i].title); 
+            
+            linkEl.appendChild(ImageEl); 
+
+            favouriteItemEl.appendChild(titleEl); 
+            favouriteItemEl.appendChild(linkEl);
+            favouriteItemEl.appendChild(iconEl);  
+
+            favouriteItemsEl.appendChild(favouriteItemEl); 
         }
     }
 }
-
+/*
 function renderRandomRecipe(){
     searchResultEl.innerHTML = ""; 
 
@@ -159,7 +176,9 @@ function renderRandomRecipe(){
         }
     })        
 }
+*/
+//searchBtn.addEventListener('click', searchRecipe); 
+searchResultEl.addEventListener('click', favouriteItemsClick); 
+favouriteItemsEl.addEventListener('click', favouriteItemsClick); 
 
-searchBtn.addEventListener('click', searchRecipe); 
-searchResultEl.addEventListener('click', favouriteClick); 
-favouritesEl.addEventListener('click', favouriteClick); 
+init(); 
