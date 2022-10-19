@@ -24,9 +24,11 @@ body {
 }
 
 .logo {
-  width: auto;
-  height: auto;
-  min-height: 120px;
+  width: 15%;
+  height: 15%;
+  box-shadow: 2px 2px 1px 1px rgb(111, 106, 103);
+  border-radius: 2px;
+/*  min-height: 120px; */
 }
 
 .hdr {
@@ -193,6 +195,11 @@ body {
 }
 
 @media screen and (max-width: 992px) {
+  .logo {
+    width: 150px; 
+    height: 150px; 
+  }
+
   .row {
     display: flex;
     flex-direction: column;

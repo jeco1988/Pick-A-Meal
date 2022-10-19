@@ -22,7 +22,7 @@ function init(){
 
     // initial model form
     $('.modal').modal();
-    
+
     //renderRandomRecipe(); 
 }
 

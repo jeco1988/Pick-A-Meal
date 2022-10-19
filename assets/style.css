@@ -9,9 +9,11 @@ body {
 }
 
 .logo {
-  width: auto;
-  height: auto;
-  min-height: 120px;
+  width: 15%;
+  height: 15%;
+  box-shadow: 2px 2px 1px 1px rgb(111, 106, 103);
+  border-radius: 2px;
+/*  min-height: 120px; */
 }
 
 @font-face {
@@ -19,7 +21,6 @@ body {
   src: url(./Font/Farmstand\ Market\ Regular.otf);
   src: url(./Font/Farmstand\ Market\ Regular.ttf);
 }
-
 
 .header-container {
   width: 100%;
@@ -64,7 +65,7 @@ body {
 }*/
 
 #video-item {
-    width:fit-content; 
+    width:100%; 
 }
 
 #video-title {
@@ -157,4 +158,11 @@ height:100%;
 	font-weight: 100;
 	margin-top: 70px;
 	margin-left:40px;
+}
+
+@media screen and (max-width: 992px) {
+  .logo {
+    width: 150px; 
+    height: 150px; 
+  }
 }
