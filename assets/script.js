@@ -19,7 +19,10 @@ var favouriteList = new Array();
 
 function init(){
     renderFavouriteList(); 
+
+    // initial model form
     $('.modal').modal();
+    
     //renderRandomRecipe(); 
 }
 
@@ -71,7 +74,7 @@ function favouriteItemsClick(event) {
         if (element.dataset.selected) {
             //remove the recipe ID from the local storage
             if (favouriteList !== null) {
-                $('#remove-favourite').modal('open');
+                //$('#remove-favourite').modal('open');
                 for (var i = 0; i < favouriteList.length; i++) {
                     if (favouriteList[i].id == element.dataset.recipeid) {
                         favouriteList.splice(i, 1); 
@@ -93,9 +96,9 @@ function favouriteItemsClick(event) {
 
             if (favouriteList === null) {
                 favouriteList = new Array(); 
-                favouriteList.push(favouriteItem);    
+                favouriteList.unshift(favouriteItem);    
             } else {
-                favouriteList.push(favouriteItem);
+                favouriteList.unshift(favouriteItem);
             }
         
             // save to local storage 
