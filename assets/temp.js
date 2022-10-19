@@ -1,5 +1,5 @@
 //HTML Elements
-
+/*
 var recipeApiKey = "e997f9e02dmsh36310832249fb62p1d185ajsn9739a2708183";
 var recipeApiHost = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
 const recipeApiOptions = {
@@ -9,6 +9,7 @@ const recipeApiOptions = {
     "X-RapidAPI-Host": recipeApiHost,
   },
 };
+*/
 
 window.addEventListener("load", (event) => {
   console.log("The page has fully loaded");
