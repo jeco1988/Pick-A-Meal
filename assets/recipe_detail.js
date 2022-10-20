@@ -52,8 +52,6 @@ function getRecipeDetail(recipeID) {
       response
         .json()
         .then(function (data) {
-          console.log(data);
-
           if (data.length !== 0) {
             // assign value to the html elements
             recipeTitle.innerHTML = data.title;
@@ -149,7 +147,6 @@ function renderVideoList(searchText) {
   fetch(requestUrl).then(function (response) {
     if (response.status == 200) { 
       response.json().then(function (data) {
-        console.log(data);
         for (var i = 0; i < data.items.length; i++) {
           // render elements for video list in here
           var videoItemEl = document.createElement('div'); 

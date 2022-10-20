@@ -20,10 +20,7 @@ var favouriteList = new Array();
 function init(){
     renderFavouriteList(); 
 
-    // initial model form
-    $('.modal').modal();
-
-    //renderRandomRecipe(); 
+    renderRandomRecipe(); 
 }
 
 // call the below function after clicking the search button 
@@ -68,10 +65,9 @@ function searchRecipe(event) {
 // call the below functions when the user click the favourite icon 
 function favouriteItemsClick(event) {
     var element = event.target;
-
     // if click on the star
     if (element.matches('i')) { 
-        if (element.dataset.selected) {
+        if (element.dataset.selected == '1') {
             //remove the recipe ID from the local storage
             if (favouriteList !== null) {
                 //$('#remove-favourite').modal('open');
@@ -84,9 +80,10 @@ function favouriteItemsClick(event) {
                 // save to local storage 
                 localStorage.setItem("favourites", JSON.stringify(favouriteList));
                 
-                element.setAttribute('data-selected', 'false')
+                element.setAttribute('data-selected', '0')
+                element.setAttribute('class', 'fa-regular fa-star star');        
             }
-        } else {        
+        } else {  
             //add the favouriteItem to the local storage
             var favouriteItem = {
                 id: element.dataset.recipeid,
@@ -103,8 +100,23 @@ function favouriteItemsClick(event) {
         
             // save to local storage 
             localStorage.setItem("favourites", JSON.stringify(favouriteList));
+
+            element.setAttribute('data-selected', '1')
+            element.setAttribute('class', 'fa-solid fa-star star');        
         }
-    
+
+        for (var i = 1; i <= 4; i++) {
+            var starEl = document.getElementById('star-' + i); 
+
+            if (isFavouriteItem(starEl.dataset.recipeid)) {
+                starEl.setAttribute('data-selected', '1'); 
+                starEl.setAttribute('class', 'fa-solid fa-star star');        
+            } else {
+                starEl.setAttribute('data-selected', '0'); 
+                starEl.setAttribute('class', 'fa-regular fa-star star');        
+            }    
+        }
+
         renderFavouriteList();     
     }
 }
@@ -133,7 +145,7 @@ function renderFavouriteList() {
 
             var iconEl = document.createElement('i'); 
             iconEl.setAttribute('class', 'fa-solid fa-star star'); 
-            iconEl.setAttribute('data-selected', true); 
+            iconEl.setAttribute('data-selected', '1'); 
             iconEl.setAttribute('data-recipeid', favouriteList[i].id); 
             iconEl.setAttribute('data-image', favouriteList[i].image);
             iconEl.setAttribute('data-title', favouriteList[i].title); 
@@ -148,29 +160,103 @@ function renderFavouriteList() {
         }
     }
 }
-/*
-function renderRandomRecipe(){
-    searchResultEl.innerHTML = ""; 
 
+function renderRandomRecipe(){
     //call API to get the recipe randomly and rendering elements on the screen
     var getRandomRcpUrl = 'https://' + recipeApiHost + '/recipes/random?number=4'; 
      
     fetch(getRandomRcpUrl, recipeApiOptions).then(function(response){
         if (response.ok) {
             response.json().then(function(data){
-                console.log(data); 
                 for (var i = 0; i < data.recipes.length; i++) {
-                    //rendering elements showing in the favourite list 
-                    console.log(data.recipes[i].id); 
-                    console.log(data.recipes[i].image); 
-                    console.log(data.recipes[i].title); 
-
-                    var li = document.createElement("li");
-
-                    // set the href attribute to the recipe detail page 
-                    [image a element].setAttribute('href', './recipe_detail.html?recipeID=' + data.id);
-
-                    searchResultEl.appendChild(li);
+                    //rendering elements showing in the favourite list
+                    if (i == 0) {
+                        //declare HTML elements
+                        var randomImage = document.getElementById("image-card-content-1");
+                        var randomRecipeTitle = document.getElementById("title-card-1");
+                        var randomSummary = document.getElementById("card-summary-1");
+                        var randomLink = document.getElementById("a-1");
+                        var randomStarEl = document.getElementById("star-1"); 
+                        randomRecipeTitle.innerHTML = data.recipes[i].title;
+                        randomSummary.innerHTML =
+                        data.recipes[i].summary.split(".", 3) + ".";
+                        randomImage.setAttribute("src", data.recipes[i].image);
+                        randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
+                        randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
+                        if (isFavouriteItem(data.recipes[i].id)) {
+                            randomStarEl.setAttribute('data-selected', '1');  
+                            randomStarEl.setAttribute('class', 'fa-solid fa-star star');                            
+                        } else {
+                            randomStarEl.setAttribute('data-selected', '0');  
+                            randomStarEl.setAttribute('class', 'fa-regular fa-star star');                            
+                        }
+                        randomStarEl.setAttribute('data-image', data.recipes[i].image);
+                        randomStarEl.setAttribute('data-title', data.recipes[i].title); 
+                    } else if (i == 1) {
+                        //declare HTML elements
+                        var randomImage = document.getElementById("image-card-content-2");
+                        var randomRecipeTitle = document.getElementById("title-card-2");
+                        var randomSummary = document.getElementById("card-summary-2");
+                        var randomLink = document.getElementById("a-2");
+                        var randomStarEl = document.getElementById("star-2");                         randomRecipeTitle.innerHTML = data.recipes[i].title;
+                        randomSummary.innerHTML =
+                        data.recipes[i].summary.split(".", 3) + ".";
+                        randomImage.setAttribute("src", data.recipes[i].image);
+                        randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
+                        randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
+                        if (isFavouriteItem(data.recipes[i].id)) {
+                            randomStarEl.setAttribute('data-selected', '1');  
+                            randomStarEl.setAttribute('class', 'fa-solid fa-star star');                            
+                        } else {
+                            randomStarEl.setAttribute('data-selected', '0');  
+                            randomStarEl.setAttribute('class', 'fa-regular fa-star star');                            
+                        }
+                        randomStarEl.setAttribute('data-image', data.recipes[i].image);
+                        randomStarEl.setAttribute('data-title', data.recipes[i].title); 
+                    } else if (i == 2) {
+                        var randomImage = document.getElementById("image-card-content-3");
+                        var randomRecipeTitle = document.getElementById("title-card-3");
+                        var randomSummary = document.getElementById("card-summary-3");
+                        var randomLink = document.getElementById("link-summary-3");
+                        var randomLink = document.getElementById("a-3");
+                        var randomStarEl = document.getElementById("star-3"); 
+                        randomRecipeTitle.innerHTML = data.recipes[i].title;
+                        randomSummary.innerHTML =
+                        data.recipes[i].summary.split(".", 3) + ".";
+                        randomImage.setAttribute("src", data.recipes[i].image);
+                        randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
+                        randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
+                        if (isFavouriteItem(data.recipes[i].id)) {
+                            randomStarEl.setAttribute('data-selected', '1');  
+                            randomStarEl.setAttribute('class', 'fa-solid fa-star star');                            
+                        } else {
+                            randomStarEl.setAttribute('data-selected', '0');  
+                            randomStarEl.setAttribute('class', 'fa-regular fa-star star');                            
+                        }
+                        randomStarEl.setAttribute('data-image', data.recipes[i].image);
+                        randomStarEl.setAttribute('data-title', data.recipes[i].title); 
+                    } else if (i == 3) {
+                        var randomImage = document.getElementById("image-card-content-4");
+                        var randomRecipeTitle = document.getElementById("title-card-4");
+                        var randomSummary = document.getElementById("card-summary-4");
+                        var randomLink = document.getElementById("a-4");
+                        var randomStarEl = document.getElementById("star-4"); 
+                        randomRecipeTitle.innerHTML = data.recipes[i].title;
+                        randomSummary.innerHTML =
+                        data.recipes[i].summary.split(".", 3) + ".";
+                        randomImage.setAttribute("src", data.recipes[i].image);
+                        randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
+                        randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
+                        if (isFavouriteItem(data.recipes[i].id)) {
+                            randomStarEl.setAttribute('data-selected', '1');  
+                            randomStarEl.setAttribute('class', 'fa-solid fa-star star');                            
+                        } else {
+                            randomStarEl.setAttribute('data-selected', '0');  
+                            randomStarEl.setAttribute('class', 'fa-regular fa-star star');                            
+                        }
+                        randomStarEl.setAttribute('data-image', data.recipes[i].image);
+                        randomStarEl.setAttribute('data-title', data.recipes[i].title); 
+                    }            
                 }
             })
             .catch(function(err) {
@@ -179,7 +265,17 @@ function renderRandomRecipe(){
         }
     })        
 }
-*/
+
+function isFavouriteItem(recipeID) {
+    for (var i=0; i < favouriteList.length; i++) {
+        if (recipeID == favouriteList[i].id) {
+            return true; 
+        }
+    }
+
+    return false; 
+}
+
 //searchBtn.addEventListener('click', searchRecipe); 
 searchResultEl.addEventListener('click', favouriteItemsClick); 
 favouriteItemsEl.addEventListener('click', favouriteItemsClick); 
