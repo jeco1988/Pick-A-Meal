@@ -13,6 +13,7 @@ const recipeApiOptions = {
 var searchResultEl = document.querySelector('#search-result'); 
 var favouriteItemsEl = document.querySelector('#favourite-items'); 
 var searchBtn = document.querySelector('#search-button'); 
+var keywordInput = document.querySelector('#keyword-input'); 
 
 // favourite list from local storage 
 var favouriteList = new Array(); 
@@ -24,21 +25,24 @@ function init(){
 }
 
 // call the below function after clicking the search button 
-/*
+
 function searchRecipe(event) {
     event.preventDefault(); 
 
-    //capture variables from screen
-    var queryStr = 'query=' + [get from html element]; 
-    var cuisineStr = '&cuisine=' + [get from html element]; 
-    var dietStr = '&diet=' + [get from html element];
-    var intoleranceStr = '&intolerances=' + [get from html element];  
-    var typeStr = '&type=' + [get from html element];
-    
-    var searchRcpUrl = 'https://' + recipeApiHost + '/recipes/complexSearch?' + queryStr + cuisineStr + dietStr + intoleranceStr + typeStr; 
+    console.log(keywordInput.value);
 
-    // for testing the API only
-    var searchRcpUrl = 'https://' + recipeApiHost + '/recipes/complexSearch?query=pasta&cuisine=italian&diet=vegetarian&intolerances=gluten&type=main%20course'; 
+    //capture variables from screen
+    if (keywordInput.value.trim() !== ''){
+        var queryStr = 'query=' + keywordInput.value.trim(); 
+    } else {
+        return; 
+    }
+//    var cuisineStr = '&cuisine=' + [get from html element]; 
+//    var dietStr = '&diet=' + [get from html element];
+//    var intoleranceStr = '&intolerances=' + [get from html element];  
+//    var typeStr = '&type=' + [get from html element];
+   
+    var searchRcpUrl = 'https://' + recipeApiHost + '/recipes/complexSearch?' + queryStr + '&number=4'; 
 
     fetch(searchRcpUrl, recipeApiOptions).then(function(response){
         if (response.ok) {
@@ -49,9 +53,27 @@ function searchRecipe(event) {
                     console.log(data.results[i].id); 
                     console.log(data.results[i].image); 
                     console.log(data.results[i].title); 
-
-                    // set the href attribute to the recipe detail page 
-                    [image a element].setAttribute('href', './recipe_detail.html?recipeID=' + data.results[i].id)
+                    
+                    var j = i + 1
+                    var resultImage = document.getElementById("image-card-content-" + j);
+                    var resultRecipeTitle = document.getElementById("title-card-" + j);
+                    var resultSummary = document.getElementById("card-summary-" + j);
+                    var resultLink = document.getElementById("a-" + j);
+                    var resultStarEl = document.getElementById("star-" + j); 
+                    resultRecipeTitle.innerHTML = data.results[i].title;
+                    resultSummary.innerHTML = ""; 
+                    resultImage.setAttribute("src", data.results[i].image);
+                    resultLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.results[i].id); 
+                    resultStarEl.setAttribute('data-recipeid', data.results[i].id); 
+                    if (isFavouriteItem(data.results[i].id)) {
+                        resultStarEl.setAttribute('data-selected', '1');  
+                        resultStarEl.setAttribute('class', 'fa-solid fa-star star');                            
+                    } else {
+                        resultStarEl.setAttribute('data-selected', '0');  
+                        resultStarEl.setAttribute('class', 'fa-regular fa-star star');                            
+                    }
+                    resultStarEl.setAttribute('data-image', data.results[i].image);
+                    resultStarEl.setAttribute('data-title', data.results[i].title); 
                 }
             })
             .catch(function(err) {
@@ -60,7 +82,7 @@ function searchRecipe(event) {
         }
     })
 }
-*/
+
 
 // call the below functions when the user click the favourite icon 
 function favouriteItemsClick(event) {
@@ -179,7 +201,7 @@ function renderRandomRecipe(){
                         var randomStarEl = document.getElementById("star-1"); 
                         randomRecipeTitle.innerHTML = data.recipes[i].title;
                         randomSummary.innerHTML =
-                        data.recipes[i].summary.split(".", 3) + ".";
+                        data.recipes[i].summary.split(".", 2) + ".";
                         randomImage.setAttribute("src", data.recipes[i].image);
                         randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
                         randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
@@ -198,9 +220,10 @@ function renderRandomRecipe(){
                         var randomRecipeTitle = document.getElementById("title-card-2");
                         var randomSummary = document.getElementById("card-summary-2");
                         var randomLink = document.getElementById("a-2");
-                        var randomStarEl = document.getElementById("star-2");                         randomRecipeTitle.innerHTML = data.recipes[i].title;
+                        var randomStarEl = document.getElementById("star-2");                         
+                        randomRecipeTitle.innerHTML = data.recipes[i].title;
                         randomSummary.innerHTML =
-                        data.recipes[i].summary.split(".", 3) + ".";
+                        data.recipes[i].summary.split(".", 2) + ".";
                         randomImage.setAttribute("src", data.recipes[i].image);
                         randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
                         randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
@@ -222,7 +245,7 @@ function renderRandomRecipe(){
                         var randomStarEl = document.getElementById("star-3"); 
                         randomRecipeTitle.innerHTML = data.recipes[i].title;
                         randomSummary.innerHTML =
-                        data.recipes[i].summary.split(".", 3) + ".";
+                        data.recipes[i].summary.split(".", 2) + ".";
                         randomImage.setAttribute("src", data.recipes[i].image);
                         randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
                         randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
@@ -243,7 +266,7 @@ function renderRandomRecipe(){
                         var randomStarEl = document.getElementById("star-4"); 
                         randomRecipeTitle.innerHTML = data.recipes[i].title;
                         randomSummary.innerHTML =
-                        data.recipes[i].summary.split(".", 3) + ".";
+                        data.recipes[i].summary.split(".", 2) + ".";
                         randomImage.setAttribute("src", data.recipes[i].image);
                         randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
                         randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
@@ -267,16 +290,18 @@ function renderRandomRecipe(){
 }
 
 function isFavouriteItem(recipeID) {
-    for (var i=0; i < favouriteList.length; i++) {
-        if (recipeID == favouriteList[i].id) {
-            return true; 
+    if (favouriteList !== null) {
+        for (var i=0; i < favouriteList.length; i++) {
+            if (recipeID == favouriteList[i].id) {
+                return true; 
+            }
         }
     }
-
+    
     return false; 
 }
 
-//searchBtn.addEventListener('click', searchRecipe); 
+searchBtn.addEventListener('click', searchRecipe); 
 searchResultEl.addEventListener('click', favouriteItemsClick); 
 favouriteItemsEl.addEventListener('click', favouriteItemsClick); 
 
