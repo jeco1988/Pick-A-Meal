@@ -220,7 +220,8 @@ function renderRandomRecipe(){
                         var randomRecipeTitle = document.getElementById("title-card-2");
                         var randomSummary = document.getElementById("card-summary-2");
                         var randomLink = document.getElementById("a-2");
-                        var randomStarEl = document.getElementById("star-2");                         randomRecipeTitle.innerHTML = data.recipes[i].title;
+                        var randomStarEl = document.getElementById("star-2");                         
+                        randomRecipeTitle.innerHTML = data.recipes[i].title;
                         randomSummary.innerHTML =
                         data.recipes[i].summary.split(".", 2) + ".";
                         randomImage.setAttribute("src", data.recipes[i].image);
