@@ -19,8 +19,8 @@ var keywordInput = document.querySelector('#keyword-input');
 var favouriteList = new Array(); 
 
 function init(){
-    renderFavouriteList(); 
-
+    renderFavouriteList();
+ 
     renderRandomRecipe(); 
 }
 
@@ -29,12 +29,15 @@ function init(){
 function searchRecipe(event) {
     event.preventDefault(); 
 
-    console.log(keywordInput.value);
-
     //capture variables from screen
     if (keywordInput.value.trim() !== ''){
         var queryStr = 'query=' + keywordInput.value.trim(); 
     } else {
+        $(document).ready(function(){
+            $('#input-message').modal();
+            $('#input-message').modal('open'); 
+        });
+        
         return; 
     }
 //    var cuisineStr = '&cuisine=' + [get from html element]; 
@@ -42,7 +45,7 @@ function searchRecipe(event) {
 //    var intoleranceStr = '&intolerances=' + [get from html element];  
 //    var typeStr = '&type=' + [get from html element];
    
-    var searchRcpUrl = 'https://' + recipeApiHost + '/recipes/complexSearch?' + queryStr + '&number=4'; 
+    var searchRcpUrl = 'https://' + recipeApiHost + '/recipes/complexSearch?' + queryStr + '&number=4&addRecipeInformation=true'; 
 
     fetch(searchRcpUrl, recipeApiOptions).then(function(response){
         if (response.ok) {
@@ -61,7 +64,8 @@ function searchRecipe(event) {
                     var resultLink = document.getElementById("a-" + j);
                     var resultStarEl = document.getElementById("star-" + j); 
                     resultRecipeTitle.innerHTML = data.results[i].title;
-                    resultSummary.innerHTML = ""; 
+                    resultSummary.innerHTML =
+                    data.results[i].summary.split(".", 2) + ".";
                     resultImage.setAttribute("src", data.results[i].image);
                     resultLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.results[i].id); 
                     resultStarEl.setAttribute('data-recipeid', data.results[i].id); 
@@ -296,7 +300,7 @@ function isFavouriteItem(recipeID) {
             }
         }
     }
-    
+
     return false; 
 }
 
