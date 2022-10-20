@@ -17,21 +17,129 @@
         <img class="logo z-depth-4" src="./assets/images/Pick-A-Meal.jpg">
       </div>
     </header>
-
   <main class="container" style="border: 2px dotted">
       <div class="row">
           <section id="search-wrapper" class="col s12 m3 l3" style="border: 2px dotted">
               <input placeholder="Search by Keyword" id="first_name2" type="text" class="validate">
               <a class="waves-effect waves-light btn">Search</a>
-              <div class="input-field col s12">
-                <select multiple>
-                  <option value="" disabled selected>Choose your option</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
-                </select>
-                <label>Materialize Multiple Select</label>
-              </div>
+              <h2>Type of meal</h2>
+              <form action="#" id="mealtime-filter">
+                <div class="filter-container">
+                    <label>
+                        <input type="checkbox" id="main-course"/>
+                        <span>Main Course</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="side-dish"/>
+                        <span>Side dish</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="dessert"/>
+                        <span>Dessert</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="appetizer"/>
+                        <span>Appetizer</span>
+                    </label>
+                </div>
+                <div class="filter-container">
+                    <label>
+                        <input type="checkbox" id="breakfast"/>
+                        <span>Breakfast</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="soup"/>
+                        <span>Soup</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="beverage"/>
+                        <span>Beverage</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="sauce"/>
+                        <span>Sauce</span>
+                    </label>
+                </div>
+              </form>
+              
+              <h2>Cuisine</h2>
+              <form action="#" id="mealtime-filter">
+                <div class="filter-container">
+                    <label>
+                        <input type="checkbox" id="chinese"/>
+                        <span>Chinese</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="japanese"/>
+                        <span>Japanese</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="thai"/>
+                        <span>Thai</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="indian"/>
+                        <span>Indian</span>
+                    </label>
+                </div>
+                <div class="filter-container">
+                    <label>
+                        <input type="checkbox" id="korean"/>
+                        <span>Korean</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="italian"/>
+                        <span>Italian</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="mexican"/>
+                        <span>Mexican</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="american"/>
+                        <span>American</span>
+                    </label>
+                </div>
+              </form>
+              <h2>Intolerance / Allergy</h2>
+              <form action="#" id="mealtime-filter">
+                <div class="filter-container">
+                    <label>
+                        <input type="checkbox" id="dairy"/>
+                        <span>Dairy</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="gluten"/>
+                        <span>Gluten</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="peanuts"/>
+                        <span>Peanuts</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="seafood"/>
+                        <span>Seafood</span>
+                    </label>
+                </div>
+                <div class="filter-container">
+                    <label>
+                        <input type="checkbox" id="egg"/>
+                        <span>Egg</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="shellfish"/>
+                        <span>Shellfish</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="soy"/>
+                        <span>Soy</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="wheat"/>
+                        <span>Wheat</span>
+                    </label>
+                </div>
+              </form>
             
               <a class="waves-effect waves-light btn">Apply filters</a>              
           </section>
