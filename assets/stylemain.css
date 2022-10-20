@@ -66,6 +66,10 @@ body {
   display:block; 
 }
 
+.star {
+  color: rgb(255, 203, 0);
+}
+
 .btn {
   border-radius: 10px;
 }
