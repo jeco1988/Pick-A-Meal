@@ -7,13 +7,14 @@
     <title>Pick-A-Meal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="./assets/stylemain.css">
     <link rel="icon" type="image/x-icon" href="./assets/images/Pick-A-Meal.jpg">
 </head>
 <body>
   <header>
       <div class = "header-container card-panel">
-        <img class="logo" src="./assets/images/Pick-A-Meal.jpg">
+        <img class="logo z-depth-4" src="./assets/images/Pick-A-Meal.jpg">
       </div>
     </header>
 
@@ -141,77 +142,98 @@
                 </div>
               </form>
             
-              <a class="waves-effect waves-light btn">Apply filters</a>
-              
+              <a class="waves-effect waves-light btn">Apply filters</a>              
           </section>
 
-          <section id="search-result" class="col s12 m6 l6" style="border: 2px dotted">
-              <div class="recipe-item card col s12 m6 l6 z-depth-4" >
-                  <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="images/office.jpg">
-                  </div>
-                  <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Recipe 1<i class="material-icons right">close</i></span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div>
-              </div>        
-              <div class="recipe-item card col s12 m6 l6 z-depth-4">
-                  <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="images/office.jpg">
-                  </div>
-                  <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Recipe 2<i class="material-icons right">close</i></span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div>
+          <section id="search-result" style="border: 2px dotted">              
+            <div class="col s12 m6 l6 recipe-item">
+              <div class="card horizontal" id="card-1" >
+                <img  style="width: 250px;
+                  height: 250px;
+                  object-fit: cover;" id="image-card-content-1">
+                <div class="card-content teal" id="card-content-1">
+                  <span class="card-title" id="title-card-1"></span>
+                  <blockquote id="card-summary-1"></blockquote>
+                  <a href="#" style="padding: 5%;" id="link-summary-1"></a>
+                </div>    
               </div>
-              <div class="recipe-item card col s12 m6 l6 z-depth-4">
-                  <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="images/office.jpg">
-                  </div>
-                  <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Recipe 3<i class="material-icons right">close</i></span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div>
-              </div>
-              <div class="recipe-item card col s12 m6 l6 z-depth-4">
-                  <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="images/office.jpg">
-                  </div>
-                  <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Recipe 4<i class="material-icons right">close</i></span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div>
-              </div>                        
-          </section>
-
-          <section class="col s12 m3 l3" style="border: 2px dotted">
-            <div id="favourites" class="aside">
-                <h5>My favourites</h5>
-                <div class="favourite-item card z-depth-4">
-                    <h6 id="favourite-title">Creamy Lemon Chicken Pasta + Super Easy Sauce</h6>
-                    <a href="#">
-                        <img src="https://i.ytimg.com/vi/YPgoUhZwfFA/mqdefault.jpg" class="responsive-img rounded" data-link="https://www.youtube.com/embed/YPgoUhZwfFA?autoplay=1">
-                    </a>
-                </div>
-
-                <div class="favourite-item card">
-                    <h6 id="favourite-title">Creamy Lemon Chicken Pasta + Super Easy Sauce</h6>
-                    <a href="#">
-                        <img src="https://i.ytimg.com/vi/YPgoUhZwfFA/mqdefault.jpg" class="responsive-img rounded" data-link="https://www.youtube.com/embed/YPgoUhZwfFA?autoplay=1">
-                    </a>
-                </div>
             </div>
+
+            <div class="col s12 m6 l6 recipe-item">
+              <div class="card horizontal" id="card-2">
+                <img  style="width: 250px;
+                  height: 250px;
+                  object-fit: cover;" id="image-card-content-2">
+                <div class="card-content teal" id="card-content-2">
+                  <span class="card-title" id="title-card-2"></span>
+                  <blockquote id="card-summary-2"></blockquote>
+                  <a href="#" style="padding: 5%;" id="link-summary-2"></a>
+                </div>    
+              </div>
+            </div>
+
+            <div class="col s12 m6 l6 recipe-item">
+              <div class="card horizontal" id="card-3">
+                <img  style="width: 250px;
+                  height: 250px;
+                  object-fit: cover;" id="image-card-content-3">
+                  
+                <div class="card-content teal" id="card-content-3">
+                  <span class="card-title" id="title-card-3">ksjdfjd</span>
+                  <blockquote id="card-summary-3"></blockquote>
+                  <a href="#" style="padding: 5%;" id="link-summary-3"></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col s12 m6 l6 recipe-item">
+              <div class="card horizontal" id="card-4">
+                <img  style="width: 250px;
+                  height: 250px;
+                  object-fit: cover;" id="image-card-content-4">
+                  
+                <div class="card-content teal" id="card-content-4">
+                  <span class="card-title" id="title-card-4"></span>
+                  <blockquote id="card-summary-4"></blockquote>
+                  <a href="#" style="padding: 5%;" id="link-summary-4"></a>
+                </div> 
+              </div>      
+            </div>                      
+          </section>
+
+          <section class="col s12 m12 l3" style="border: 2px dotted">
+            <aside id="favourites" class="aside">
+                <h5>My favourites</h5>
+                <div id="favourite-items">
+                    <!-- render favourite items in here -->
+                </div>
+            </aside>
           </section>
       </div>
   </main>
+
+  <!-- model form for confirming deletion of favourite items -->
+  <div id="remove-favourite" class="modal">
+    <div class="modal-content">
+      <h4>Remove Favourite Item</h4>
+      <p>You are going to remove one of your favourite recipe.  Confirm to remove?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
   <div class="footer">
     <div id="button"></div>
   <div id="container">
   <div id="cont">
   <div class="footer_center">
-         <h3>© Copyright 2022 Pick-A-Meal Pty Ltd</h3>
+    <h3>© Copyright 2022 Pick-A-Meal Pty Ltd</h3>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./assets/script.js"></script>
+  <script src="./assets/temp.js"></script>
 </body>
 </html>
