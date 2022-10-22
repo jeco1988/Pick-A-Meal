@@ -273,6 +273,11 @@ body {
     flex-direction: column;
     width: 100%;
   }
+
+  .recipe-item {
+    height: 25%;
+  }
+
   #favourites {
     width: 100%;
   }
