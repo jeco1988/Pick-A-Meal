@@ -206,7 +206,7 @@ function renderRandomRecipe(){
                         var randomStarEl = document.getElementById("star-1"); 
                         randomRecipeTitle.innerHTML = data.recipes[i].title;
                         var summaryText = data.recipes[i].summary.split(".", 2) + "."; 
-                        randomSummary.innerHTML = (summaryText.length > 120) ? summaryText.slice(1, 120) + '...' : summaryText;
+                        randomSummary.innerHTML = (summaryText.length > 120) ? summaryText.slice(0, 120) + '...' : summaryText;
                         randomImage.setAttribute("src", data.recipes[i].image);
                         randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
                         randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
@@ -228,7 +228,7 @@ function renderRandomRecipe(){
                         var randomStarEl = document.getElementById("star-2");
                         randomRecipeTitle.innerHTML = data.recipes[i].title;
                         var summaryText = data.recipes[i].summary.split(".", 2) + "."; 
-                        randomSummary.innerHTML = (summaryText.length > 120) ? summaryText.slice(1, 120) + '...' : summaryText;
+                        randomSummary.innerHTML = (summaryText.length > 120) ? summaryText.slice(0, 120) + '...' : summaryText;
                         randomImage.setAttribute("src", data.recipes[i].image);
                         randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
                         randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
