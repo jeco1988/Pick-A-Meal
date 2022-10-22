@@ -63,8 +63,8 @@ function searchRecipe(event) {
                     var resultLink = document.getElementById("a-" + j);
                     var resultStarEl = document.getElementById("star-" + j); 
                     resultRecipeTitle.innerHTML = data.results[i].title;
-                    resultSummary.innerHTML =
-                    data.results[i].summary.split(".", 2) + ".";
+                    var summaryText = data.results[i].summary.split(".", 2) + "."
+                    resultSummary.innerHTML = (summaryText.length > 120) ? summaryText.slice(0, 120) + '...' : summaryText;
                     resultImage.setAttribute("src", data.results[i].image);
                     resultLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.results[i].id); 
                     resultStarEl.setAttribute('data-recipeid', data.results[i].id); 
@@ -205,8 +205,8 @@ function renderRandomRecipe(){
                         var randomLink = document.getElementById("a-1");
                         var randomStarEl = document.getElementById("star-1"); 
                         randomRecipeTitle.innerHTML = data.recipes[i].title;
-                        randomSummary.innerHTML =
-                        data.recipes[i].summary.split(".", 2) + ".";
+                        var summaryText = data.recipes[i].summary.split(".", 2) + "."; 
+                        randomSummary.innerHTML = (summaryText.length > 120) ? summaryText.slice(1, 120) + '...' : summaryText;
                         randomImage.setAttribute("src", data.recipes[i].image);
                         randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
                         randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
@@ -225,10 +225,10 @@ function renderRandomRecipe(){
                         var randomRecipeTitle = document.getElementById("title-card-2");
                         var randomSummary = document.getElementById("card-summary-2");
                         var randomLink = document.getElementById("a-2");
-                        var randomStarEl = document.getElementById("star-2");                         randomRecipeTitle.innerHTML = data.recipes[i].title;
+                        var randomStarEl = document.getElementById("star-2");
                         randomRecipeTitle.innerHTML = data.recipes[i].title;
-                        randomSummary.innerHTML =
-                        data.recipes[i].summary.split(".", 2) + ".";
+                        var summaryText = data.recipes[i].summary.split(".", 2) + "."; 
+                        randomSummary.innerHTML = (summaryText.length > 120) ? summaryText.slice(1, 120) + '...' : summaryText;
                         randomImage.setAttribute("src", data.recipes[i].image);
                         randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
                         randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
@@ -249,8 +249,8 @@ function renderRandomRecipe(){
                         var randomLink = document.getElementById("a-3");
                         var randomStarEl = document.getElementById("star-3"); 
                         randomRecipeTitle.innerHTML = data.recipes[i].title;
-                        randomSummary.innerHTML =
-                        data.recipes[i].summary.split(".", 2) + ".";
+                        var summaryText = data.recipes[i].summary.split(".", 2) + "."; 
+                        randomSummary.innerHTML = (summaryText.length > 120) ? summaryText.slice(0, 120) + '...' : summaryText;
                         randomImage.setAttribute("src", data.recipes[i].image);
                         randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
                         randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
@@ -270,8 +270,8 @@ function renderRandomRecipe(){
                         var randomLink = document.getElementById("a-4");
                         var randomStarEl = document.getElementById("star-4"); 
                         randomRecipeTitle.innerHTML = data.recipes[i].title;
-                        randomSummary.innerHTML =
-                        data.recipes[i].summary.split(".", 2) + ".";
+                        var summaryText = data.recipes[i].summary.split(".", 2) + "."; 
+                        randomSummary.innerHTML = (summaryText.length > 120) ? summaryText.slice(0, 120) + '...' : summaryText;
                         randomImage.setAttribute("src", data.recipes[i].image);
                         randomLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.recipes[i].id); 
                         randomStarEl.setAttribute('data-recipeid', data.recipes[i].id); 
