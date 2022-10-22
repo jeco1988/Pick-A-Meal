@@ -74,20 +74,21 @@ function getRecipeDetail(recipeID) {
               recipeIngredients.appendChild(recipeIngredientsOL);
             }
             //UPDATE THIS SECTION WHEN API KEY WORKS
-            var cookInstruction = data.instructions.split(".");
+            if (data.instructions !== null) {
+              var cookInstruction = data.instructions.split(".");
 
-            for (count = 0; count < cookInstruction.length; count++) {
-              //check for empty string
+              for (count = 0; count < cookInstruction.length; count++) {
+                //check for empty string
 
-              if (cookInstruction[count] != "") {
-                //console.log(cookInstruction[count]);
-                var recipeInstructionsOL = document.createElement("li");
-                recipeInstructionsOL.setAttribute("class", "collection-item");
-                recipeInstructionsOL.innerHTML = cookInstruction[count];
-                recipeInstructions.appendChild(recipeInstructionsOL);
+                if (cookInstruction[count] != "") {
+                  //console.log(cookInstruction[count]);
+                  var recipeInstructionsOL = document.createElement("li");
+                  recipeInstructionsOL.setAttribute("class", "collection-item");
+                  recipeInstructionsOL.innerHTML = cookInstruction[count];
+                  recipeInstructions.appendChild(recipeInstructionsOL);
+                }
               }
             }
-
             // console.log(data[0].id);
             // console.log(data[0].image);
             //console.log(data.title);

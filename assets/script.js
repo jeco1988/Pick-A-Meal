@@ -19,8 +19,8 @@ var keywordInput = document.querySelector('#keyword-input');
 var favouriteList = new Array(); 
 
 function init(){
-    renderFavouriteList(); 
-
+    renderFavouriteList();
+ 
     renderRandomRecipe(); 
 }
 
@@ -29,12 +29,15 @@ function init(){
 function searchRecipe(event) {
     event.preventDefault(); 
 
-    console.log(keywordInput.value);
-
     //capture variables from screen
     if (keywordInput.value.trim() !== ''){
         var queryStr = 'query=' + keywordInput.value.trim(); 
     } else {
+        $(document).ready(function(){
+            $('#input-message').modal();
+            $('#input-message').modal('open'); 
+        });
+
         return; 
     }
 //    var cuisineStr = '&cuisine=' + [get from html element]; 
@@ -42,12 +45,11 @@ function searchRecipe(event) {
 //    var intoleranceStr = '&intolerances=' + [get from html element];  
 //    var typeStr = '&type=' + [get from html element];
    
-    var searchRcpUrl = 'https://' + recipeApiHost + '/recipes/complexSearch?' + queryStr + '&number=4'; 
+    var searchRcpUrl = 'https://' + recipeApiHost + '/recipes/complexSearch?' + queryStr + '&number=4&addRecipeInformation=true'; 
 
     fetch(searchRcpUrl, recipeApiOptions).then(function(response){
         if (response.ok) {
             response.json().then(function(data){
-                console.log(data); 
                 for (var i = 0; i < data.results.length; i++) {
                     //create elements and populate the results
                     console.log(data.results[i].id); 
@@ -61,7 +63,8 @@ function searchRecipe(event) {
                     var resultLink = document.getElementById("a-" + j);
                     var resultStarEl = document.getElementById("star-" + j); 
                     resultRecipeTitle.innerHTML = data.results[i].title;
-                    resultSummary.innerHTML = ""; 
+                    resultSummary.innerHTML =
+                    data.results[i].summary.split(".", 2) + ".";
                     resultImage.setAttribute("src", data.results[i].image);
                     resultLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.results[i].id); 
                     resultStarEl.setAttribute('data-recipeid', data.results[i].id); 
@@ -127,6 +130,7 @@ function favouriteItemsClick(event) {
             element.setAttribute('class', 'fa-solid fa-star star');        
         }
 
+        // check whether it is favourite item and set the icon element and data state
         for (var i = 1; i <= 4; i++) {
             var starEl = document.getElementById('star-' + i); 
 
@@ -153,7 +157,7 @@ function renderFavouriteList() {
             //rendering elements showing in the favourite list 
             var favouriteItemEl = document.createElement('div'); 
             favouriteItemEl.setAttribute('class', 'favourite-item card z-depth-4'); 
-            
+
             var titleEl = document.createElement('h6'); 
             titleEl.setAttribute('id', 'favourite-title'); 
             titleEl.innerHTML = favouriteList[i].title; 
@@ -164,6 +168,7 @@ function renderFavouriteList() {
             var ImageEl = document.createElement('img'); 
             ImageEl.setAttribute('class', 'responsive-img'); 
             ImageEl.setAttribute('src', favouriteList[i].image); 
+            ImageEl.setAttribute('style', 'border-radius:5px'); 
 
             var iconEl = document.createElement('i'); 
             iconEl.setAttribute('class', 'fa-solid fa-star star'); 
@@ -174,9 +179,9 @@ function renderFavouriteList() {
             
             linkEl.appendChild(ImageEl); 
 
+            favouriteItemEl.appendChild(iconEl); 
             favouriteItemEl.appendChild(titleEl); 
-            favouriteItemEl.appendChild(linkEl);
-            favouriteItemEl.appendChild(iconEl);  
+            favouriteItemEl.appendChild(linkEl); 
 
             favouriteItemsEl.appendChild(favouriteItemEl); 
         }
@@ -220,7 +225,7 @@ function renderRandomRecipe(){
                         var randomRecipeTitle = document.getElementById("title-card-2");
                         var randomSummary = document.getElementById("card-summary-2");
                         var randomLink = document.getElementById("a-2");
-                        var randomStarEl = document.getElementById("star-2");                         
+                        var randomStarEl = document.getElementById("star-2");                         randomRecipeTitle.innerHTML = data.recipes[i].title;
                         randomRecipeTitle.innerHTML = data.recipes[i].title;
                         randomSummary.innerHTML =
                         data.recipes[i].summary.split(".", 2) + ".";
@@ -297,7 +302,7 @@ function isFavouriteItem(recipeID) {
             }
         }
     }
-    
+
     return false; 
 }
 

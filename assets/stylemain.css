@@ -92,6 +92,10 @@ body {
   color: rgb(255, 203, 0);
 }
 
+.favourite-item h6 {
+  font-size: 1.15rem; 
+  font-weight: 400;
+}
 /*
 .favourite-item,
 .favourite-item:after {
