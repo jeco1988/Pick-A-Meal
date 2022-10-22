@@ -78,6 +78,8 @@ body {
 
 #favourite-items {
   display: block;
+  overflow-y: scroll;
+  height: 800px;
 }
 
 .star {
