@@ -72,14 +72,27 @@ body {
   /*align-items: stretch*/
 }
 
+
+
+.horizontal a img {
+  max-width: 100%;
+}
+
+.card-content {
+ width: 100%;
+ height: 100%; 
+}
+
 #favourites {
   display: block;
 }
 
 #favourite-items {
   display: block;
+
   overflow-y: scroll;
   height: 800px;
+  width: 100%;
 }
 
 .star {
@@ -262,14 +275,14 @@ body {
 
   #favourite-items {
     display: flex;
+    width: 80%;
+    flex-direction: column;
   }
 
-  #favourite-items {
-    display: flex;
-  }
+
 }
 
-@media screen and (max-width: 595px) {
+@media screen and (max-width: 606px) {
   .row {
     display: flex;
     flex-direction: column;
@@ -286,5 +299,15 @@ body {
 
   #favourite-items {
     display: block;
+  }
+  .card-content {
+    height: 100%;
+  }
+
+
+  .recipe-item {
+    width: 100%;
+    height: auto;
+
   }
 }
