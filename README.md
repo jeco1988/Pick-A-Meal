@@ -2,40 +2,85 @@
 
 The one-stop webpage for finding all of your favourite recipes.
 
-## Description
+Pick-A-Meal is a semantic search database that allows users to search and retrieve recipe suggestions. Users will then be able to save those recipes in a 'favourites' list which saves to their local machine. Once the user clicked through to their desired search result, suggested YouTube recipe videos also appear, alongside the chosen recipe.
 
-A basic recipe search database that allows the user to input keywords and retrieve multiple recipe suggestions. Users will then be able to save those recipes in a 'favourites' list which saves to the local storage. Once users have clicked through to their desired search result, suggested YouTube recipe videos will also appear. 
-
-![Project Screenshot](/assets/XXXXXX.jpg "Pick-A-Meal")
-
-Visit Project Link: https://github.com/jeco1988/Pick-A-Meal
+Deployed URL of the application: https://jeco1988.github.io/Pick-A-Meal/
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
-
-## Installation
-
-N/A
-
-## Usage
-
-- There is a recipe search bar where users can input their desired keywords.
-- The header will display the project name.
-- Search results will appear to the right of the search bar, where multiple suggested recipes are displayed.
-- Once the user clicks through to the desired recipe, the recipe will be displayed as well as suggested YouTube recipe thumbnails.
-- If the user likes the selected recipe, they may click the star and save it to the 'favourites list' in the local storage.
+- [Installation](#installation)
+- [Technologies] (#technologies)
+- [Features] (#features)
+- [Further] (#further)
 
 ## Credits
-<a href="https://www.flaticon.com/free-icons/menu" title="menu icons">Menu icons created by Freepik - Flaticon</a>
-<a href="https://stock.adobe.com/search?k=%22food+background%22&asset_id=443370711"> Background image </a>
-<a href="https://www.freewebheaders.com/food-beverage/food-headers/"> Header image</a>
- <a href='https://pngtree.com/free-backgrounds'>free background photos from pngtree.com/</a>
- <a href="https://www.flaticon.com/free-icons/open-menu" title="open menu icons">Open menu icons created by Freepik - Flaticon</a>
+
+- Header Image: https://www.freewebheaders.com/food-beverage/food-headers/
+- Spoonancular API: https://spoonacular.com/food-api
+- You Tube API:
 
 ## License
 
 Please refer to the repo.
+
+## Installation
+
+Not applicable
+
+## Technologies used
+
+- HTML 5
+- JavaScript DOM
+- jQuery
+- Spoonacular API, for semantic search
+- You Tube API, for displaying recipe suggestions for the selected recipe
+- Materialize CSS
+- Font Awsome
+
+## Feratures, usage and instructions
+
+### Application website
+
+- Go to https://jeco1988.github.io/Pick-A-Meal/
+
+### Random recipies
+
+1. On loading the main page, you will be presented with four random recipies
+2. Click on the image, to view the recipe in detail.
+   ![](assets/images/screenshot-homepage.png)
+
+### Search for a recipe
+
+1. Enter your search term in the textbox. Note: You can enter one or several words to get a better search result
+2. Click on the Search button. The top four search results are displayed
+3. Click on the image of the search result, to view the recipe detail.
+   ![](assets/images/Screenshot-search-recipe.png)
+
+### Add favourites
+
+1. Select the start icon against a recipe, in the search results (see image III).
+2. The selected recipe is added to the list
+3. Your favourites appear on the "My Favourites" list. Note: The favourite list is reloaded with anything saved when you open the browser window.
+   ![](assets/images/screenshot-add-favourite.png)
+
+### Remove favourites
+
+1. Select the start icon against a recipe, from the "My Favourites" list (see image IV).
+2. The item is removed the "My Favourites" list. Note: The recipe removed will no longer appear when reloading your browser.
+   ![](assets/images/screenshot-remove-favourite.png)
+
+### Return to main page
+
+When you are on the recipe detail page, you can:
+
+- Select the back button from the browser, and return to the main page
+- Alternatively, select the Pick-A-Meal logo from the header, and return to the main page (see image V).
+  ![](assets/images/screenshot-return-to-homepage.png)
+
+## Further work and Improvements
+
+- Filter / search by 'type of meal', 'cusine' and 'intolerance/allergy' not implemented due to time constraints
+- Display multiple search results and pagination (currently, the search results are limited to the 'top four' results)
+- Create a 'github secret' for the spoonify API key (as this is a paid service)
