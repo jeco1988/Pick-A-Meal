@@ -148,14 +148,14 @@
             <div class="col s12 m6 l6 recipe-item">
               <div class="card horizontal" id="card-1" >
                 <a id="a-1" href="">
-                  <img  style="width: 200px;
-                    height: 100%;
-                    object-fit: cover;" id="image-card-content-1">
+                  <img  style="width: 250px;
+                    height: 250px;
+                    object-fit: cover;" class="responsive-img" id="image-card-content-1">
                 </a>
                 <div class="card-content teal" id="card-content-1">
                   <i id='star-1' class = 'fa-regular fa-star star'></i>
                   <span class="card-title" id="title-card-1"></span>
-                  <p id="card-summary-1"></p>
+                  <blockquote id="card-summary-1"></blockquote>
                 </div>    
               </div>
             </div>
@@ -163,15 +163,14 @@
             <div class="col s12 m6 l6 recipe-item">
               <div class="card horizontal" id="card-2">
                 <a id="a-2" href="">
-                  <img  style="width: 200px;
-  
-                  height: 100%;
-                  object-fit: cover;" id="image-card-content-2">
+                  <img  style="width: 250px;
+                    height: 250px;
+                    object-fit: cover;" class="responsive-img" id="image-card-content-2">
                 </a>
-                <div class="card-content teal" class="responsive-img" id="card-content-2">
+                <div class="card-content teal" id="card-content-2">
                   <i id='star-2' class = 'fa-regular fa-star star'></i>
                   <span class="card-title" id="title-card-2"></span>
-                  <p id="card-summary-2"></p>
+                  <blockquote id="card-summary-2"></blockquote>
                 </div>    
               </div>
             </div>
@@ -179,15 +178,14 @@
             <div class="col s12 m6 l6 recipe-item">
               <div class="card horizontal" id="card-3">
                 <a id="a-3" href="">
-                  <img style="width: 200px;
-  
-                  height: 100%;
-                  object-fit: cover;" id="image-card-content-3">
+                  <img  style="width: 250px;
+                    height: 250px;
+                    object-fit: cover;" class="responsive-img" id="image-card-content-3">
                 </a> 
                 <div class="card-content teal" id="card-content-3">
                   <i id='star-3' class = 'fa-regular fa-star star'></i>
                   <span class="card-title" id="title-card-3"></span>
-                  <p id="card-summary-3"></p>
+                  <blockquote id="card-summary-3"></blockquote>
                 </div>
               </div>
             </div>
@@ -195,14 +193,14 @@
             <div class="col s12 m6 l6 recipe-item">
               <div class="card horizontal" id="card-4">
                 <a id="a-4" href="">
-                  <img  style="width: 200px;
-                    height: 100%;
-                    object-fit: cover;"  id="image-card-content-4">
+                  <img  style="width: 250px;
+                    height: 250px;
+                    object-fit: cover;" class="responsive-img" id="image-card-content-4">
                 </a>
                 <div class="card-content teal" id="card-content-4">
                   <i id='star-4' class = 'fa-regular fa-star star'></i>
                   <span class="card-title" id="title-card-4"></span>
-                  <p id="card-summary-4"></p>
+                  <blockquote id="card-summary-4"></blockquote>
                 </div> 
               </div>      
             </div>                      
@@ -232,7 +230,7 @@
   <script src="./assets/script.js"></script>
   <!--script src="./assets/temp.js"></script-->
 
-  <!-- model form for prompting use to input information  -->
+  <!-- model forms  -->
   <div id="input-message" class="modal">
     <div class="modal-content">
       <h4>Input Information</h4>
@@ -243,5 +241,14 @@
     </div>
   </div>
 
+  <div id="no-result" class="modal">
+    <div class="modal-content">
+      <h4>No Search Result</h4>
+      <p>Sorry that we cannot find any recipe matching your keyword.  Please try another keyword to make a search.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
 </body>
 </html>
