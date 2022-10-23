@@ -271,7 +271,7 @@ function renderRandomRecipe(){
                         randomStarEl.setAttribute('data-image', data.recipes[i].image);
                         randomStarEl.setAttribute('data-title', data.recipes[i].title); 
                     }  
-*/          
+*/        
                 }
             })
             .catch(function(err) {
@@ -296,7 +296,7 @@ function renderSearchItem(i, recipeID, image, title, summary) {
     linkEl.setAttribute('href', './recipe_detail.html?recipeID=' + recipeID); 
 
     var imageEl = document.createElement('img'); 
-    imageEl.setAttribute('class', 'responsive-img'); 
+    //imageEl.setAttribute('class', 'responsive-img'); 
     imageEl.setAttribute('id', 'image-card-content-' + j); 
     imageEl.setAttribute('style', 'height: 100% ;'); 
     imageEl.setAttribute("src", image);
