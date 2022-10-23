@@ -72,9 +72,6 @@ body {
   /*align-items: stretch*/
 }
 
-.recipe-item {
-  border-radius: 10px 10px 10px 10px;
-}
 .card-content {
 
   display: flex;
