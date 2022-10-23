@@ -34,6 +34,7 @@ window.addEventListener("load", (event) => {
               var randomRecipeTitle = document.getElementById("title-card-1");
               var randomSummary = document.getElementById("card-summary-1");
               var randomLink = document.getElementById("link-summary-1");
+              var randomStarEl = document.getElementById("star-1"); 
               randomRecipeTitle.innerHTML = data.recipes[i].title;
               randomSummary.innerHTML =
                 data.recipes[i].summary.split(".", 3) + ".";
