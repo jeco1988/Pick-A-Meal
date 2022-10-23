@@ -36,8 +36,7 @@ function searchRecipe(event) {
         $(document).ready(function(){
             $('#input-message').modal();
             $('#input-message').modal('open'); 
-        });
-
+        })
         return; 
     }
 //    var cuisineStr = '&cuisine=' + [get from html element]; 
@@ -50,33 +49,17 @@ function searchRecipe(event) {
     fetch(searchRcpUrl, recipeApiOptions).then(function(response){
         if (response.ok) {
             response.json().then(function(data){
-                for (var i = 0; i < data.results.length; i++) {
-                    //create elements and populate the results
-                    console.log(data.results[i].id); 
-                    console.log(data.results[i].image); 
-                    console.log(data.results[i].title); 
-                    
-                    var j = i + 1
-                    var resultImage = document.getElementById("image-card-content-" + j);
-                    var resultRecipeTitle = document.getElementById("title-card-" + j);
-                    var resultSummary = document.getElementById("card-summary-" + j);
-                    var resultLink = document.getElementById("a-" + j);
-                    var resultStarEl = document.getElementById("star-" + j); 
-                    resultRecipeTitle.innerHTML = data.results[i].title;
-                    var summaryText = data.results[i].summary.split(".", 2) + "."
-                    resultSummary.innerHTML = (summaryText.length > 120) ? summaryText.slice(0, 120) + '...' : summaryText;
-                    resultImage.setAttribute("src", data.results[i].image);
-                    resultLink.setAttribute('href', './recipe_detail.html?recipeID=' + data.results[i].id); 
-                    resultStarEl.setAttribute('data-recipeid', data.results[i].id); 
-                    if (isFavouriteItem(data.results[i].id)) {
-                        resultStarEl.setAttribute('data-selected', '1');  
-                        resultStarEl.setAttribute('class', 'fa-solid fa-star star');                            
-                    } else {
-                        resultStarEl.setAttribute('data-selected', '0');  
-                        resultStarEl.setAttribute('class', 'fa-regular fa-star star');                            
+                if (data.results.length !== 0) {
+                    searchResultEl.innerHTML = ''; 
+                    for (var i = 0; i < data.results.length; i++) {
+                        //create elements and populate the results
+                        renderSearchItem(i, data.results[i].id, data.results[i].image, data.results[i].title, data.results[i].summary); 
                     }
-                    resultStarEl.setAttribute('data-image', data.results[i].image);
-                    resultStarEl.setAttribute('data-title', data.results[i].title); 
+                } else {
+                    $(document).ready(function(){
+                        $('#no-result').modal();
+                        $('#no-result').modal('open'); 
+                    })                    
                 }
             })
             .catch(function(err) {
@@ -195,8 +178,11 @@ function renderRandomRecipe(){
     fetch(getRandomRcpUrl, recipeApiOptions).then(function(response){
         if (response.ok) {
             response.json().then(function(data){
+                searchResultEl.innerHTML = ''; 
                 for (var i = 0; i < data.recipes.length; i++) {
                     //rendering elements showing in the favourite list
+                    renderSearchItem(i, data.recipes[i].id, data.recipes[i].image, data.recipes[i].title, data.recipes[i].summary); 
+/*
                     if (i == 0) {
                         //declare HTML elements
                         var randomImage = document.getElementById("image-card-content-1");
@@ -284,7 +270,8 @@ function renderRandomRecipe(){
                         }
                         randomStarEl.setAttribute('data-image', data.recipes[i].image);
                         randomStarEl.setAttribute('data-title', data.recipes[i].title); 
-                    }            
+                    }  
+*/          
                 }
             })
             .catch(function(err) {
@@ -292,6 +279,67 @@ function renderRandomRecipe(){
             })
         }
     })        
+}
+
+function renderSearchItem(i, recipeID, image, title, summary) {
+    var j= i + 1
+
+    var blockEl = document.createElement('div'); 
+    blockEl.setAttribute('class', 'col s12 m6 l6 recipe-item'); 
+
+    var cardEl = document.createElement('div'); 
+    cardEl.setAttribute('class', 'card horizontal'); 
+    cardEl.setAttribute('id', 'card-' + j); 
+
+    var linkEl = document.createElement('a'); 
+    linkEl.setAttribute('id', 'a-' + j); 
+    linkEl.setAttribute('href', './recipe_detail.html?recipeID=' + recipeID); 
+
+    var imageEl = document.createElement('img'); 
+    imageEl.setAttribute('class', 'responsive-img'); 
+    imageEl.setAttribute('id', 'image-card-content-' + j); 
+    imageEl.setAttribute('style', 'height: 100% ;'); 
+    imageEl.setAttribute("src", image);
+
+    var contentEl = document.createElement('div'); 
+    contentEl.setAttribute('class', 'card-content teal'); 
+    contentEl.setAttribute('id', 'card-content-' + j); 
+
+    var iconEl = document.createElement('i'); 
+    iconEl.setAttribute('id', 'star-' + j); 
+    iconEl.setAttribute('data-recipeid', recipeID); 
+    if (isFavouriteItem(recipeID)) {
+        iconEl.setAttribute('data-selected', '1');  
+        iconEl.setAttribute('class', 'fa-solid fa-star star');                            
+    } else {
+        iconEl.setAttribute('data-selected', '0');  
+        iconEl.setAttribute('class', 'fa-regular fa-star star');                            
+    }
+    iconEl.setAttribute('data-image', image);
+    iconEl.setAttribute('data-title', title); 
+
+    var titleEl = document.createElement('span'); 
+    titleEl.setAttribute('class', 'card-title'); 
+    titleEl.setAttribute('id', 'title-card-' + j); 
+    titleEl.innerHTML = title;
+
+    var summaryEl = document.createElement('blockquote'); 
+    summaryEl.setAttribute('id', 'card-summary-' + j); 
+    var summaryText = summary.split(".", 2) + "."; 
+    summaryEl.innerHTML = (summaryText.length > 120) ? summaryText.slice(0, 120) + '...' : summaryText;
+
+    contentEl.appendChild(iconEl); 
+    contentEl.appendChild(titleEl); 
+    contentEl.appendChild(summaryEl); 
+
+    linkEl.appendChild(imageEl); 
+
+    cardEl.appendChild(linkEl); 
+    cardEl.appendChild(contentEl); 
+
+    blockEl.appendChild(cardEl); 
+
+    searchResultEl.appendChild(blockEl); 
 }
 
 function isFavouriteItem(recipeID) {
