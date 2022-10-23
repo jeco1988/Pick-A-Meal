@@ -142,7 +142,7 @@ function renderVideoList(searchText) {
   var requestUrl =
     "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" +
     searchText +
-    "&type=video&key=" +
+    "&type=video&videoEmbeddable=true&key=" +
     youtubeApiKey;
 
   fetch(requestUrl).then(function (response) {
