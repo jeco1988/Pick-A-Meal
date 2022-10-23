@@ -298,7 +298,7 @@ function renderSearchItem(i, recipeID, image, title, summary) {
     var imageEl = document.createElement('img'); 
     imageEl.setAttribute('class', 'responsive-img'); 
     imageEl.setAttribute('id', 'image-card-content-' + j); 
-    imageEl.setAttribute('style', 'width: 250px;height: 250px;object-fit: cover;'); 
+    imageEl.setAttribute('style', 'height: 100% ;'); 
     imageEl.setAttribute("src", image);
 
     var contentEl = document.createElement('div'); 
