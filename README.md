@@ -11,15 +11,15 @@ Deployed URL of the application: https://jeco1988.github.io/Pick-A-Meal/
 - [Credits](#credits)
 - [License](#license)
 - [Installation](#installation)
-- [Technologies] (#technologies)
-- [Features] (#features)
-- [Further] (#further)
+- [Technologies used](#technologies-used)
+- [Feratures usage and instructions](#features-usage-and-instructions)
+- [Further work and improvements](#further-work-and-improvements)
 
 ## Credits
 
 - Header Image: https://www.freewebheaders.com/food-beverage/food-headers/
 - Spoonancular API: https://spoonacular.com/food-api
-- You Tube API:
+- You Tube API: https://developers.google.com/youtube/v3/guides/implementation/search
 
 ## License
 
@@ -39,7 +39,7 @@ Not applicable
 - Materialize CSS
 - Font Awsome
 
-## Feratures, usage and instructions
+## Features, usage and instructions
 
 ### Application website
 
@@ -79,7 +79,7 @@ When you are on the recipe detail page, you can:
 - Alternatively, select the Pick-A-Meal logo from the header, and return to the main page (see image V).
   ![](assets/images/screenshot-return-to-homepage.png)
 
-## Further work and Improvements
+## Further work and improvements
 
 - Filter / search by 'type of meal', 'cusine' and 'intolerance/allergy' not implemented due to time constraints
 - Display multiple search results and pagination (currently, the search results are limited to the 'top four' results)
